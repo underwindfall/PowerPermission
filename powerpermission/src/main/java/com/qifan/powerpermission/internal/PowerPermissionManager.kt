@@ -3,10 +3,15 @@ package com.qifan.powerpermission.internal
 import androidx.annotation.VisibleForTesting
 import androidx.fragment.app.FragmentActivity
 import com.qifan.powerpermission.Permission
-import com.qifan.powerpermission.PowerPermission.isAllGranted
+import com.qifan.powerpermission.PermissionCallback
+import com.qifan.powerpermission.RequestCode
 import com.qifan.powerpermission.internal.extension.debug
 import com.qifan.powerpermission.internal.extension.transact
 
+/**
+ * internal manager to help dealing with runtime permissions
+ * @param fragmentActivity An instance of FragmentActivity
+ */
 class PowerPermissionManager internal constructor(
     private val fragmentActivity: FragmentActivity
 ) {
@@ -37,12 +42,23 @@ class PowerPermissionManager internal constructor(
         permissionFragment?.release()
     }
 
-    fun requestPermission(vararg permissions: Permission, requestCallback: RequestCallback) {
-        if (fragmentActivity.isAllGranted(*permissions)) {
-            onDetachFragment()
-            return
-        } else {
-            onAttachPermissionFragment().askedPermission(permissions, requestCallback)
+    /**
+     * All permission need to be requested
+     * @param permissions a list of permissions to be requested
+     * @param requestCode request Permission CODE by default is [PERMISSION_REQUEST_CODE]
+     * @param callback to return after execute requesting permissions
+     */
+    fun requestPermissions(
+        vararg permissions: Permission,
+        requestCode: RequestCode = PERMISSION_REQUEST_CODE,
+        callback: PermissionCallback
+    ) {
+        PermissionParams(
+            permissions = permissions.toList(),
+            requestCode = requestCode,
+            callback = callback
+        ).apply {
+            onAttachPermissionFragment().askedPermission(this)
         }
     }
 }
