@@ -1,35 +1,30 @@
 package com.qifan.powerpermission.data
 
-import android.app.Activity
 import android.content.pm.PackageManager
-import androidx.core.app.ActivityCompat
 import com.qifan.powerpermission.Permission
+import com.qifan.powerpermission.internal.PermissionFragment
 
+/**
+ * enum grant result to represent status of permission grant
+ */
 enum class GrantResult {
     GRANTED,
-    DENIED,
+    RATIONAL,
     PERMANENTLY_DENIED
 }
 
-internal fun Int.asGrantResult(
-    forPermission: Permission,
-    activity: Activity
+internal fun PermissionFragment.asGrantResult(
+    grantResult: Int,
+    forPermission: Permission
 ): GrantResult {
-    if (ActivityCompat.shouldShowRequestPermissionRationale(activity, forPermission)) {
-        return GrantResult.PERMANENTLY_DENIED
-    }
-    return when (this) {
+    return when (grantResult) {
         PackageManager.PERMISSION_GRANTED -> GrantResult.GRANTED
-        else -> GrantResult.DENIED
-    }
-}
-
-internal fun IntArray.mapGrantResults(
-    permissions: Set<Permission>,
-    activity: Activity
-): List<GrantResult> {
-    return mapIndexed { index, grantResult ->
-        val permission: Permission = permissions.elementAt(index)
-        grantResult.asGrantResult(permission, activity)
+        else -> {
+            if (shouldShowRequestPermissionRationale(forPermission)) {
+                GrantResult.RATIONAL
+            } else {
+                GrantResult.PERMANENTLY_DENIED
+            }
+        }
     }
 }

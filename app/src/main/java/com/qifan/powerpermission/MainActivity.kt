@@ -1,47 +1,56 @@
 package com.qifan.powerpermission
 
 import android.Manifest
-import android.content.Intent
 import android.os.Bundle
-import android.provider.MediaStore
-import android.widget.Toast
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
-
-private const val REQUEST_IMAGE_CAPTURE = 0
+import com.qifan.powerpermission.data.*
+import com.qifan.powerpermission.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
+    private val resultText get() = binding.result
+    private val requestButton get() = binding.request
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        test.setOnClickListener { showCamera() }
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        requestButton.setOnClickListener { requestPermissions() }
     }
 
-    private fun showCamera() {
+    private fun requestPermissions() {
         PowerPermission.init(this)
-            .requestPermission(Manifest.permission.CAMERA) { rationalList, grantedList, deniedList ->
+            .requestPermissions(
+                Manifest.permission.CAMERA,
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.READ_CALENDAR
+            ) { permissionResult ->
                 when {
-                    grantedList.contains(Manifest.permission.CAMERA) -> startCamera()
-                    rationalList.isNotEmpty() -> Toast.makeText(
-                        this,
-                        "camera permission required $rationalList",
-                        Toast.LENGTH_LONG
-                    ).show()
-                    deniedList.isNotEmpty() -> Toast.makeText(
-                        this,
-                        "camera permission denied $deniedList",
-                        Toast.LENGTH_LONG
-                    ).show()
+                    permissionResult.hasAllGranted() -> {
+                        doPermissionAllGrantedWork(permissionResult.granted())
+                    }
+                    permissionResult.hasRational() -> {
+                        doPermissionReasonWork(permissionResult.rational())
+                    }
+                    permissionResult.hasPermanentDenied() -> {
+                        doPermissionPermanentWork(permissionResult.permanentDenied())
+                    }
                 }
             }
     }
 
-    private fun startCamera() {
-        Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
-            takePictureIntent.resolveActivity(packageManager)?.also {
-                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
-            }
-        }
+    private fun doPermissionPermanentWork(permanentDenied: List<Permission>) {
+        resultText.text = getString(R.string.permission_denied, permanentDenied)
+    }
+
+    private fun doPermissionReasonWork(rational: List<Permission>) {
+        // TODO provide some way inject into lib and give a free trial to user too
+        Log.d(this::class.java.simpleName, "reason work $rational")
+    }
+
+    private fun doPermissionAllGrantedWork(permissions: List<Permission>) {
+        resultText.text = getString(R.string.permission_all_granted, permissions)
     }
 }
