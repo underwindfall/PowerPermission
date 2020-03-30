@@ -5,6 +5,9 @@ import com.qifan.powerpermission.PermissionCallback
 import com.qifan.powerpermission.RequestCode
 import com.qifan.powerpermission.rationale.delegate.RationaleDelegate
 
+/**
+ * Default Permission request code
+ */
 const val PERMISSION_REQUEST_CODE = 1
 
 internal data class PermissionParams(

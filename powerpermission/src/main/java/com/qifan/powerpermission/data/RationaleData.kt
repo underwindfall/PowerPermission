@@ -5,6 +5,14 @@ import androidx.fragment.app.Fragment
 import com.qifan.powerpermission.Permission
 import com.qifan.powerpermission.core.extension.isRational
 
+/**
+ * Class for set value for Rationale permissions
+ * @param rationalPermission target permission to display reason
+ * e.g [android.Manifest.permission.ACCESS_COARSE_LOCATION]
+ * @param rationalPermissions target list of permissions to display reason
+ * e.g [listOf] [android.Manifest.permission.ACCESS_COARSE_LOCATION])
+ * @param message display reason about requiring permission
+ */
 data class RationaleData internal constructor(
     private val rationalPermission: Permission?,
     private val rationalPermissions: List<Permission>?,

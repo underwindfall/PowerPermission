@@ -10,6 +10,9 @@ interface Configuration {
     val enableLog: Boolean
 }
 
+/**
+ * Default Implementation of configuration for setting global environment
+ */
 internal data class DefaultConfiguration(
     override val enableLog: Boolean = false
 ) : Configuration

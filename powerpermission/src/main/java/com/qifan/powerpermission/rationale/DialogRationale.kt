@@ -8,6 +8,15 @@ import com.qifan.powerpermission.data.RationaleData
 import com.qifan.powerpermission.rationale.delegate.RationaleDelegate
 import com.qifan.powerpermission.rationale.delegate.dialog.DialogRationaleDelegate
 
+/**
+ * shortcut extension to display dialog rationale explains required permission
+ * @param dialogTitle title of dialog
+ * @param requiredPermission target permission when call [Fragment.shouldShowRequestPermissionRationale]
+ * return true to display dialog
+ * @param message to describe reason about requiring permission
+ * @param positiveText to set string to [android.app.AlertDialog.BUTTON_POSITIVE]
+ * @param negativeText to set string to [android.app.AlertDialog.BUTTON_NEGATIVE]
+ */
 fun Fragment.createDialogRationale(
     @StringRes dialogTitle: Int,
     requiredPermission: Permission,
@@ -31,6 +40,15 @@ fun Fragment.createDialogRationale(
     }
 }
 
+/**
+ * shortcut extension to display dialog rationale explains required permission
+ * @param dialogTitle title of dialog
+ * @param requiredPermissions list of target permission when call
+ * [Fragment.shouldShowRequestPermissionRationale] return true to display dialog
+ * @param message to describe reason about requiring permission
+ * @param positiveText to set string to [android.app.AlertDialog.BUTTON_POSITIVE]
+ * @param negativeText to set string to [android.app.AlertDialog.BUTTON_NEGATIVE]
+ */
 fun Fragment.createDialogRationale(
     @StringRes dialogTitle: Int,
     requiredPermissions: List<Permission>,
@@ -54,6 +72,15 @@ fun Fragment.createDialogRationale(
     }
 }
 
+/**
+ * shortcut extension to display dialog rationale explains required permission
+ * @param dialogTitle title of dialog
+ * @param requiredPermission target permission when call [Fragment.shouldShowRequestPermissionRationale]
+ * return true to display dialog
+ * @param message to describe reason about requiring permission
+ * @param positiveText to set string to [android.app.AlertDialog.BUTTON_POSITIVE]
+ * @param negativeText to set string to [android.app.AlertDialog.BUTTON_NEGATIVE]
+ */
 fun Activity.createDialogRationale(
     @StringRes dialogTitle: Int,
     requiredPermission: Permission,
@@ -77,6 +104,15 @@ fun Activity.createDialogRationale(
     }
 }
 
+/**
+ * shortcut extension to display dialog rationale explains required permission
+ * @param dialogTitle title of dialog
+ * @param requiredPermissions list of target permission when call
+ * [Fragment.shouldShowRequestPermissionRationale] return true to display dialog
+ * @param message to describe reason about requiring permission
+ * @param positiveText to set string to [android.app.AlertDialog.BUTTON_POSITIVE]
+ * @param negativeText to set string to [android.app.AlertDialog.BUTTON_NEGATIVE]
+ */
 fun Activity.createDialogRationale(
     @StringRes dialogTitle: Int,
     requiredPermissions: List<Permission>,
