@@ -39,6 +39,7 @@ internal fun PermissionData.isPermanentDenied(): Boolean {
     return grantResult == GrantResult.PERMANENTLY_DENIED
 }
 
+/** @return `true` if given permissions contains rationale permission. */
 @CheckResult
 internal fun Fragment.isRational(permissions: List<Permission>): Boolean {
     return permissions.any { shouldShowRequestPermissionRationale(it) }

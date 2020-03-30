@@ -12,7 +12,7 @@ typealias RequestCode = Int
 typealias PermissionCallback = (PermissionResult) -> Unit
 
 /**
- * Singleton to use as PowerPermission do initial work
+ * Declaration PowerPermission do initial work
  */
 object PowerPermission {
     internal var configuration: Configuration by notNull()
