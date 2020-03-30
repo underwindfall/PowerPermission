@@ -21,30 +21,53 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun requestPermissions() {
-        PowerPermission.init(this)
-            .requestPermissions(
+//        PowerPermission.init(this)
+//            .requestPermissions(
+//                Manifest.permission.CAMERA,
+//                Manifest.permission.ACCESS_COARSE_LOCATION,
+//                Manifest.permission.ACCESS_FINE_LOCATION,
+//                Manifest.permission.READ_CALENDAR,
+//                rationaleDelegate = createDialogRationale(
+//                    R.string.rational_title,
+//                    Manifest.permission.CAMERA,
+//                    getString(R.string.permission_rational, Manifest.permission.CAMERA)
+//                )
+//            ) { permissionResult ->
+//                when {
+//                    permissionResult.hasAllGranted() -> {
+//                        doPermissionAllGrantedWork(permissionResult.granted())
+//                    }
+//                    permissionResult.hasRational() -> {
+//                        doPermissionReasonWork(permissionResult.rational())
+//                    }
+//                    permissionResult.hasPermanentDenied() -> {
+//                        doPermissionPermanentWork(permissionResult.permanentDenied())
+//                    }
+//                }
+//            }
+        askPermissions(
+            Manifest.permission.CAMERA,
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.READ_CALENDAR,
+            rationaleDelegate = createDialogRationale(
+                R.string.rational_title,
                 Manifest.permission.CAMERA,
-                Manifest.permission.ACCESS_COARSE_LOCATION,
-                Manifest.permission.ACCESS_FINE_LOCATION,
-                Manifest.permission.READ_CALENDAR,
-                rationaleDelegate = createDialogRationale(
-                    R.string.rational_title,
-                    Manifest.permission.CAMERA,
-                    getString(R.string.permission_rational, Manifest.permission.CAMERA)
-                )
-            ) { permissionResult ->
-                when {
-                    permissionResult.hasAllGranted() -> {
-                        doPermissionAllGrantedWork(permissionResult.granted())
-                    }
-                    permissionResult.hasRational() -> {
-                        doPermissionReasonWork(permissionResult.rational())
-                    }
-                    permissionResult.hasPermanentDenied() -> {
-                        doPermissionPermanentWork(permissionResult.permanentDenied())
-                    }
+                getString(R.string.permission_rational, Manifest.permission.CAMERA)
+            )
+        ) { permissionResult ->
+            when {
+                permissionResult.hasAllGranted() -> {
+                    doPermissionAllGrantedWork(permissionResult.granted())
+                }
+                permissionResult.hasRational() -> {
+                    doPermissionReasonWork(permissionResult.rational())
+                }
+                permissionResult.hasPermanentDenied() -> {
+                    doPermissionPermanentWork(permissionResult.permanentDenied())
                 }
             }
+        }
     }
 
     private fun doPermissionPermanentWork(permanentDenied: List<Permission>) {
