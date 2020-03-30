@@ -3,6 +3,7 @@ package com.qifan.powerpermission.internal
 import android.content.Context
 import androidx.fragment.app.Fragment
 import com.qifan.powerpermission.data.PermissionResult
+import com.qifan.powerpermission.data.hasRational
 import com.qifan.powerpermission.internal.extension.debug
 import com.qifan.powerpermission.internal.extension.transact
 import kotlin.properties.Delegates.notNull
@@ -51,13 +52,18 @@ class PermissionFragment : Fragment() {
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
-        if (requestCode == permissionParams.requestCode) {
+        val (_, code, callback, rationalHandler) = permissionParams
+        if (requestCode == code) {
             val result = PermissionResult(
                 fragment = this@PermissionFragment,
                 permissions = permissions.toSet(),
                 grantResults = grantResults
             )
-            permissionParams.callback(result)
+            if (result.hasRational() && rationalHandler != null) {
+                rationalHandler.showRationale()
+            } else {
+                callback(result)
+            }
         } else {
             super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         }
