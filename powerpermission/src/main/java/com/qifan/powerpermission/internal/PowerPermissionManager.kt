@@ -7,7 +7,7 @@ import com.qifan.powerpermission.PermissionCallback
 import com.qifan.powerpermission.RequestCode
 import com.qifan.powerpermission.internal.extension.debug
 import com.qifan.powerpermission.internal.extension.transact
-import com.qifan.powerpermission.rationale.RationaleHandler
+import com.qifan.powerpermission.rationale.delegate.RationaleDelegate
 
 /**
  * internal manager to help dealing with runtime permissions
@@ -47,20 +47,20 @@ class PowerPermissionManager internal constructor(
      * All permission need to be requested
      * @param permissions a list of permissions to be requested
      * @param requestCode request Permission CODE by default is [PERMISSION_REQUEST_CODE]
-     * @param rationaleHandler rationaleHandler to handle displaying reason interaction
+     * @param rationaleDelegate rationaleHandler to handle displaying reason interaction
      * @param callback to return after execute requesting permissions
      */
     fun requestPermissions(
         vararg permissions: Permission,
         requestCode: RequestCode = PERMISSION_REQUEST_CODE,
-        rationaleHandler: RationaleHandler? = null,
+        rationaleDelegate: RationaleDelegate? = null,
         callback: PermissionCallback
     ) {
         PermissionParams(
             permissions = permissions.toList(),
             requestCode = requestCode,
             callback = callback,
-            rationaleHandler = rationaleHandler
+            rationaleDelegate = rationaleDelegate
         ).apply {
             onAttachPermissionFragment().askedPermission(this)
         }

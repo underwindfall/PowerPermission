@@ -6,7 +6,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.qifan.powerpermission.data.*
 import com.qifan.powerpermission.databinding.ActivityMainBinding
-import com.qifan.powerpermission.rationale.impl.DialogRationaleHandler
+import com.qifan.powerpermission.rationale.createDialogRationale
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -27,13 +27,10 @@ class MainActivity : AppCompatActivity() {
                 Manifest.permission.ACCESS_COARSE_LOCATION,
                 Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.READ_CALENDAR,
-                rationaleHandler = DialogRationaleHandler(
-                    this,
+                rationaleDelegate = createDialogRationale(
                     R.string.rational_title,
-                    RationaleData(
-                        Manifest.permission.CAMERA,
-                        getString(R.string.permission_rational, Manifest.permission.CAMERA)
-                    )
+                    Manifest.permission.CAMERA,
+                    getString(R.string.permission_rational, Manifest.permission.CAMERA)
                 )
             ) { permissionResult ->
                 when {

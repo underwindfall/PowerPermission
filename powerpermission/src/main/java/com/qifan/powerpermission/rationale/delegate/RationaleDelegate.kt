@@ -1,4 +1,4 @@
-package com.qifan.powerpermission.rationale
+package com.qifan.powerpermission.rationale.delegate
 
 import com.qifan.powerpermission.Permission
 import com.qifan.powerpermission.data.RationaleData
