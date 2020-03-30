@@ -2,14 +2,15 @@ package com.qifan.powerpermission.rationale.delegate.dialog
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.content.Context
 import androidx.annotation.StringRes
 import com.qifan.powerpermission.Permission
 import com.qifan.powerpermission.data.RationaleData
 import com.qifan.powerpermission.rationale.delegate.RationaleActionCallback
 import com.qifan.powerpermission.rationale.delegate.RationaleDelegate
 
-class DialogRationaleDelegate constructor(
-    private val context: Activity,
+class DialogRationaleDelegate internal constructor(
+    private val context: Context,
     @StringRes private val dialogTitle: Int,
     private val positiveText: String,
     private val negativeText: String?,
