@@ -1,12 +1,12 @@
-package com.qifan.powerpermission.internal
+package com.qifan.powerpermission.core
 
 import androidx.annotation.VisibleForTesting
 import androidx.fragment.app.FragmentActivity
 import com.qifan.powerpermission.Permission
 import com.qifan.powerpermission.PermissionCallback
 import com.qifan.powerpermission.RequestCode
-import com.qifan.powerpermission.internal.extension.debug
-import com.qifan.powerpermission.internal.extension.transact
+import com.qifan.powerpermission.core.extension.debug
+import com.qifan.powerpermission.core.extension.transact
 import com.qifan.powerpermission.rationale.delegate.RationaleDelegate
 
 /**

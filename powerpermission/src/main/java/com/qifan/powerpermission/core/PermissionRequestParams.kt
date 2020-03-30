@@ -1,4 +1,4 @@
-package com.qifan.powerpermission.internal
+package com.qifan.powerpermission.core
 
 import com.qifan.powerpermission.Permission
 import com.qifan.powerpermission.PermissionCallback

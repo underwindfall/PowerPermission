@@ -1,7 +1,7 @@
-package com.qifan.powerpermission.internal.extension
+package com.qifan.powerpermission.core.extension
 
 import android.util.Log
-import com.qifan.powerpermission.BuildConfig
+import com.qifan.powerpermission.PowerPermission
 
 /**
  * Helper function to do the log debug work
@@ -12,7 +12,7 @@ internal fun Any.debug(
     message: String,
     vararg args: Any?
 ) {
-    if (BuildConfig.DEBUG) {
+    if (PowerPermission.configuration.enableLog) {
         try {
             Log.d(this::class.java.simpleName, message.format(*args))
         } catch (_: Exception) {
@@ -29,7 +29,7 @@ internal fun Any.warn(
     message: String,
     vararg args: Any?
 ) {
-    if (BuildConfig.DEBUG) {
+    if (PowerPermission.configuration.enableLog) {
         try {
             Log.w(this::class.java.simpleName, message.format(*args))
         } catch (_: Exception) {

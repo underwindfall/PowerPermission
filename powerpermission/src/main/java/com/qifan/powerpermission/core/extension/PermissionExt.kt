@@ -1,9 +1,10 @@
-package com.qifan.powerpermission.internal.extension
+package com.qifan.powerpermission.core.extension
 
 import android.content.Context
 import android.content.pm.PackageManager
 import androidx.annotation.CheckResult
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import com.qifan.powerpermission.Permission
 import com.qifan.powerpermission.data.GrantResult
 import com.qifan.powerpermission.data.PermissionData
@@ -36,4 +37,9 @@ internal fun PermissionData.isRational(): Boolean {
 @CheckResult
 internal fun PermissionData.isPermanentDenied(): Boolean {
     return grantResult == GrantResult.PERMANENTLY_DENIED
+}
+
+@CheckResult
+internal fun Fragment.isRational(permissions: List<Permission>): Boolean {
+    return permissions.any { shouldShowRequestPermissionRationale(it) }
 }

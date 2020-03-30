@@ -1,4 +1,4 @@
-package com.qifan.powerpermission.rationale.delegate.impl
+package com.qifan.powerpermission.rationale.delegate.dialog
 
 import android.app.Activity
 import android.app.AlertDialog
@@ -11,6 +11,8 @@ import com.qifan.powerpermission.rationale.delegate.RationaleDelegate
 class DialogRationaleDelegate constructor(
     private val context: Activity,
     @StringRes private val dialogTitle: Int,
+    private val positiveText: String,
+    private val negativeText: String?,
     override val data: RationaleData
 ) : RationaleDelegate {
     private var dialog: AlertDialog? = null
@@ -20,18 +22,26 @@ class DialogRationaleDelegate constructor(
         message: String,
         actionCallback: RationaleActionCallback
     ) {
-        dialog = AlertDialog.Builder(context)
-            .setTitle(dialogTitle)
-            .setMessage(message)
-            .setPositiveButton(android.R.string.ok) { dialog, _ ->
+
+        dialog = with(AlertDialog.Builder(context)) {
+            setTitle(dialogTitle)
+            setMessage(message)
+            setPositiveButton(positiveText) { dialog, _ ->
                 (dialog as AlertDialog).setOnDismissListener(null)
                 actionCallback(recheck = true)
             }
-            .setOnDismissListener {
+            negativeText?.let {
+                setNegativeButton(it) { _, _ ->
+                    (dialog as AlertDialog).setOnDismissListener(null)
+                    actionCallback(recheck = false)
+                }
+            }
+            setOnDismissListener {
                 actionCallback(recheck = false)
             }
-            .setCancelable(false)
-            .show()
+            setCancelable(negativeText.isNullOrBlank())
+            show()
+        }
     }
 
     override fun onDismissView() {

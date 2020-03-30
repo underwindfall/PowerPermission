@@ -6,12 +6,14 @@ import androidx.fragment.app.Fragment
 import com.qifan.powerpermission.Permission
 import com.qifan.powerpermission.data.RationaleData
 import com.qifan.powerpermission.rationale.delegate.RationaleDelegate
-import com.qifan.powerpermission.rationale.delegate.impl.DialogRationaleDelegate
+import com.qifan.powerpermission.rationale.delegate.dialog.DialogRationaleDelegate
 
 fun Fragment.createDialogRationale(
     @StringRes dialogTitle: Int,
     requiredPermission: Permission,
-    message: String
+    message: String,
+    positiveText: String = getString(android.R.string.ok),
+    negativeText: String? = null
 ): RationaleDelegate {
     return with(
         RationaleData(
@@ -22,7 +24,9 @@ fun Fragment.createDialogRationale(
         DialogRationaleDelegate(
             context = requireActivity(),
             dialogTitle = dialogTitle,
-            data = this
+            data = this,
+            positiveText = positiveText,
+            negativeText = negativeText
         )
     }
 }
@@ -30,7 +34,9 @@ fun Fragment.createDialogRationale(
 fun Fragment.createDialogRationale(
     @StringRes dialogTitle: Int,
     requiredPermissions: List<Permission>,
-    message: String
+    message: String,
+    positiveText: String = getString(android.R.string.ok),
+    negativeText: String? = null
 ): RationaleDelegate {
     return with(
         RationaleData(
@@ -41,16 +47,19 @@ fun Fragment.createDialogRationale(
         DialogRationaleDelegate(
             context = requireActivity(),
             dialogTitle = dialogTitle,
-            data = this
+            data = this,
+            positiveText = positiveText,
+            negativeText = negativeText
         )
     }
 }
 
-
 fun Activity.createDialogRationale(
     @StringRes dialogTitle: Int,
     requiredPermission: Permission,
-    message: String
+    message: String,
+    positiveText: String = getString(android.R.string.ok),
+    negativeText: String? = null
 ): RationaleDelegate {
     return with(
         RationaleData(
@@ -61,16 +70,19 @@ fun Activity.createDialogRationale(
         DialogRationaleDelegate(
             context = this@createDialogRationale,
             dialogTitle = dialogTitle,
-            data = this
+            data = this,
+            positiveText = positiveText,
+            negativeText = negativeText
         )
     }
 }
 
-
 fun Activity.createDialogRationale(
     @StringRes dialogTitle: Int,
     requiredPermissions: List<Permission>,
-    message: String
+    message: String,
+    positiveText: String = getString(android.R.string.ok),
+    negativeText: String? = null
 ): RationaleDelegate {
     return with(
         RationaleData(
@@ -81,8 +93,9 @@ fun Activity.createDialogRationale(
         DialogRationaleDelegate(
             context = this@createDialogRationale,
             dialogTitle = dialogTitle,
-            data = this
+            data = this,
+            positiveText = positiveText,
+            negativeText = negativeText
         )
     }
 }
-
