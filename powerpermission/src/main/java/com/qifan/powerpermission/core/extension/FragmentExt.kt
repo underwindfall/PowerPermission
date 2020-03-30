@@ -1,4 +1,4 @@
-package com.qifan.powerpermission.internal.extension
+package com.qifan.powerpermission.core.extension
 
 import android.content.Context
 import androidx.fragment.app.Fragment

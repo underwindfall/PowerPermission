@@ -52,7 +52,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun doPermissionReasonWork(rational: List<Permission>) {
-        // TODO provide some way inject into lib and give a free trial to user too
         Log.d(this::class.java.simpleName, "reason work $rational")
     }
 

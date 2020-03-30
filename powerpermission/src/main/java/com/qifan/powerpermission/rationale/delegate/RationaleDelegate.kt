@@ -1,13 +1,15 @@
 package com.qifan.powerpermission.rationale.delegate
 
 import com.qifan.powerpermission.Permission
+import com.qifan.powerpermission.core.extension.debug
 import com.qifan.powerpermission.data.RationaleData
-import com.qifan.powerpermission.internal.extension.debug
+
+internal typealias PermissionRequest = (Array<out Permission>, Int) -> Unit
 
 interface RationaleDelegate {
     val data: RationaleData
 
-    fun showRationale() {
+    fun showRationale(request: PermissionRequest, requestCode: Int) {
         displayRationale(
             permission = *data
                 .getRationalePermission()
@@ -15,7 +17,7 @@ interface RationaleDelegate {
             message = data.message,
             actionCallback = RationaleActionCallback { recheck ->
                 if (recheck) {
-                    onAcceptRecheckPermission()
+                    onAcceptRecheckPermission(request, requestCode)
                 } else {
                     onRefuseRecheckPermission()
                 }
@@ -29,9 +31,15 @@ interface RationaleDelegate {
         actionCallback: RationaleActionCallback
     )
 
-    private fun onAcceptRecheckPermission() {
+    private fun onAcceptRecheckPermission(requestPermission: PermissionRequest, requestCode: Int) {
         debug("Permissions %s will been asked again", data.getRationalePermission())
         onDismissView()
+        requestPermission(
+            data
+                .getRationalePermission()
+                .toTypedArray(),
+            requestCode
+        )
     }
 
     private fun onRefuseRecheckPermission() {

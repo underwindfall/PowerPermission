@@ -1,6 +1,6 @@
 package com.qifan.powerpermission.rationale.delegate
 
-import com.qifan.powerpermission.internal.extension.warn
+import com.qifan.powerpermission.core.extension.warn
 
 class RationaleActionCallback internal constructor(
     private var action: ((recheck: Boolean) -> Unit)?

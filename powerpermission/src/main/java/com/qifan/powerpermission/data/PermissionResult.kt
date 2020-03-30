@@ -2,10 +2,10 @@ package com.qifan.powerpermission.data
 
 import androidx.annotation.CheckResult
 import com.qifan.powerpermission.Permission
-import com.qifan.powerpermission.internal.PermissionFragment
-import com.qifan.powerpermission.internal.extension.isGranted
-import com.qifan.powerpermission.internal.extension.isPermanentDenied
-import com.qifan.powerpermission.internal.extension.isRational
+import com.qifan.powerpermission.core.PermissionFragment
+import com.qifan.powerpermission.core.extension.isGranted
+import com.qifan.powerpermission.core.extension.isPermanentDenied
+import com.qifan.powerpermission.core.extension.isRational
 
 /**
  * permission result wrapped callback essential data
