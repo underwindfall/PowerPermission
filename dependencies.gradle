@@ -16,7 +16,7 @@ ext {
     androidTargetSdkVersion = 29
 
     // KOTLIN
-    kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib:${ext.kotlin_version}"
+    kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib:${rootProject.kotlin_version}"
 
     // ANDROID LIB
     androidXVersion = "1.1.0"
