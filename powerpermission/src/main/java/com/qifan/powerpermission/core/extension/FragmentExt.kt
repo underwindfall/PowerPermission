@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentTransaction
 
 /**
- * add fragment transaction
+ * add com.qifan.powerpermission.fragment transaction
  * @param action dsl [FragmentTransaction]
  * @return Returns true if there were any pending transactions to be executed
  */
@@ -21,7 +21,7 @@ internal fun FragmentActivity.transact(action: FragmentTransaction.() -> Unit) =
     }
 
 /**
- * add fragment transaction
+ * add com.qifan.powerpermission.fragment transaction
  * @param action dsl [FragmentTransaction]
  * @return Returns true if there were any pending transactions to be executed
  */

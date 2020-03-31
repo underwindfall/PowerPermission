@@ -23,7 +23,7 @@ class PowerPermissionManager internal constructor(
         internal const val TAG_ACTIVITY = "[power_permission_fragment/activity]"
 
         @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
-        internal const val TAG_FRAGMENT = "[power_permission_fragment/fragment]"
+        internal const val TAG_FRAGMENT = "[power_permission_fragment/com.qifan.powerpermission.fragment]"
     }
 
     private fun onAttachPermissionFragment(): PermissionFragment {
