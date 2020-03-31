@@ -25,6 +25,7 @@
         </activity>
         <activity android:name=".activity.ExampleActivity" />
         <activity android:name=".rx.RxJava2Activity" />
+        <activity android:name=".rx.RxJava3Activity" />
     </application>
 
 </manifest>

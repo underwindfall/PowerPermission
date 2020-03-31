@@ -9,6 +9,7 @@ import com.qifan.powerpermission.childfragment.ExampleChildContainerFragment
 import com.qifan.powerpermission.databinding.ActivityMainBinding
 import com.qifan.powerpermission.fragment.ExampleFragment
 import com.qifan.powerpermission.rx.RxJava2Activity
+import com.qifan.powerpermission.rx.RxJava3Activity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -16,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     private val requestFragmentButton get() = binding.requestFragment
     private val requestChildFragmentButton get() = binding.requestChildFragment
     private val requestRxJava2Button get() = binding.requestRxjava2Activity
+    private val requestRxJava3Button get() = binding.requestRxjava3Activity
     private val requestFragmentContainer get() = binding.exampleFragmentContainer
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,6 +28,13 @@ class MainActivity : AppCompatActivity() {
         requestFragmentButton.setOnClickListener { navigateToRequestFragment() }
         requestChildFragmentButton.setOnClickListener { navigateToRequestChildFragment() }
         requestRxJava2Button.setOnClickListener { navigateToRxJava2Activity() }
+        requestRxJava3Button.setOnClickListener { navigateToRxJava3Activity() }
+    }
+
+    private fun navigateToRxJava3Activity() {
+        Intent(this@MainActivity, RxJava3Activity::class.java).apply {
+            startActivity(this)
+        }
     }
 
     private fun navigateToRxJava2Activity() {
@@ -62,11 +71,15 @@ class MainActivity : AppCompatActivity() {
             requestActivityButton.visibility = View.GONE
             requestFragmentButton.visibility = View.GONE
             requestChildFragmentButton.visibility = View.GONE
+            requestRxJava2Button.visibility = View.GONE
+            requestRxJava3Button.visibility = View.GONE
         } else {
             requestFragmentContainer.visibility = View.GONE
             requestActivityButton.visibility = View.VISIBLE
             requestFragmentButton.visibility = View.VISIBLE
             requestChildFragmentButton.visibility = View.VISIBLE
+            requestRxJava2Button.visibility = View.VISIBLE
+            requestRxJava3Button.visibility = View.VISIBLE
             supportActionBar?.setTitle(R.string.app_name)
         }
     }

@@ -1,19 +1,16 @@
-apply plugin: "com.android.application"
-apply plugin: "kotlin-android"
-apply plugin: "kotlin-android-extensions"
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 apply from: "$rootProject.projectDir/spotless.gradle"
 
 android {
     compileSdkVersion androidCompileSdkVersion
 
     defaultConfig {
-        applicationId "com.qifan.powerpermission"
         minSdkVersion androidMinSdkVersion
         targetSdkVersion androidTargetSdkVersion
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        versionCode androidVersionCode
+        versionName androidVersionName
     }
 
     compileOptions {
@@ -28,20 +25,14 @@ android {
         }
     }
 
-    viewBinding {
-        enabled = true
-    }
 }
 
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation project(":powerpermission")
-    implementation project(":powerpermission-rxjava2")
-    implementation project(":powerpermission-rxjava3")
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api project(":powerpermission")
     implementation kotlinStdlib
-    implementation androidXAppCompat
-    implementation constraintLayout
-    implementation "com.jakewharton.rxbinding3:rxbinding:3.1.0"
+    api androidXAppCompat
+    api rxjava3
     testImplementation "junit:junit:4.13"
     androidTestImplementation "androidx.test.ext:junit:1.1.1"
     androidTestImplementation "androidx.test.espresso:espresso-core:3.2.0"
