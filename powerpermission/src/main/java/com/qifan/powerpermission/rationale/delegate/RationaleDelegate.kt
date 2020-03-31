@@ -11,7 +11,7 @@ internal typealias PermissionRequest = (Array<out Permission>, RequestCode) -> U
  * interface to delegate [RuntimePermission] decide which way to display rationale view
  */
 interface RationaleDelegate {
-    //essential data about rational data
+    // essential data about rational data
     val data: RationaleData
 
     /**

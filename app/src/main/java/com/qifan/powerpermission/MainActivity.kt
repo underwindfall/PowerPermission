@@ -1,84 +1,73 @@
 package com.qifan.powerpermission
 
-import android.Manifest
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.qifan.powerpermission.data.*
+import com.qifan.powerpermission.activity.ExampleActivity
+import com.qifan.powerpermission.childfragment.ExampleChildContainerFragment
 import com.qifan.powerpermission.databinding.ActivityMainBinding
-import com.qifan.powerpermission.rationale.createDialogRationale
+import com.qifan.powerpermission.fragment.ExampleFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private val resultText get() = binding.result
-    private val requestButton get() = binding.request
+    private val requestActivityButton get() = binding.requestActivity
+    private val requestFragmentButton get() = binding.requestFragment
+    private val requestChildFragmentButton get() = binding.requestChildFragment
+    private val requestFragmentContainer get() = binding.exampleFragmentContainer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        requestButton.setOnClickListener { requestPermissions() }
+        requestActivityButton.setOnClickListener { navigateToRequestActivity() }
+        requestFragmentButton.setOnClickListener { navigateToRequestFragment() }
+        requestChildFragmentButton.setOnClickListener { navigateToRequestChildFragment() }
     }
 
-    private fun requestPermissions() {
-//        PowerPermission.init(this)
-//            .requestPermissions(
-//                Manifest.permission.CAMERA,
-//                Manifest.permission.ACCESS_COARSE_LOCATION,
-//                Manifest.permission.ACCESS_FINE_LOCATION,
-//                Manifest.permission.READ_CALENDAR,
-//                rationaleDelegate = createDialogRationale(
-//                    R.string.rational_title,
-//                    Manifest.permission.CAMERA,
-//                    getString(R.string.permission_rational, Manifest.permission.CAMERA)
-//                )
-//            ) { permissionResult ->
-//                when {
-//                    permissionResult.hasAllGranted() -> {
-//                        doPermissionAllGrantedWork(permissionResult.granted())
-//                    }
-//                    permissionResult.hasRational() -> {
-//                        doPermissionReasonWork(permissionResult.rational())
-//                    }
-//                    permissionResult.hasPermanentDenied() -> {
-//                        doPermissionPermanentWork(permissionResult.permanentDenied())
-//                    }
-//                }
-//            }
-        askPermissions(
-            Manifest.permission.CAMERA,
-            Manifest.permission.ACCESS_COARSE_LOCATION,
-            Manifest.permission.ACCESS_FINE_LOCATION,
-            Manifest.permission.READ_CALENDAR,
-            rationaleDelegate = createDialogRationale(
-                R.string.rational_title,
-                Manifest.permission.CAMERA,
-                getString(R.string.permission_rational, Manifest.permission.CAMERA)
-            )
-        ) { permissionResult ->
-            when {
-                permissionResult.hasAllGranted() -> {
-                    doPermissionAllGrantedWork(permissionResult.granted())
-                }
-                permissionResult.hasRational() -> {
-                    doPermissionReasonWork(permissionResult.rational())
-                }
-                permissionResult.hasPermanentDenied() -> {
-                    doPermissionPermanentWork(permissionResult.permanentDenied())
-                }
-            }
+    private fun navigateToRequestActivity() {
+        Intent(this@MainActivity, ExampleActivity::class.java).apply {
+            startActivity(this)
         }
     }
 
-    private fun doPermissionPermanentWork(permanentDenied: List<Permission>) {
-        resultText.text = getString(R.string.permission_denied, permanentDenied)
+    private fun navigateToRequestFragment() {
+        displayFragment(show = true)
+        supportFragmentManager.beginTransaction()
+            .add(R.id.example_fragment_container, ExampleFragment())
+            .addToBackStack("RequestFragment")
+            .commit()
     }
 
-    private fun doPermissionReasonWork(rational: List<Permission>) {
-        Log.d(this::class.java.simpleName, "reason work $rational")
+    private fun navigateToRequestChildFragment() {
+        displayFragment(show = true)
+        supportFragmentManager.beginTransaction()
+            .add(R.id.example_fragment_container, ExampleChildContainerFragment())
+            .addToBackStack("RequestChildFragment")
+            .commit()
     }
 
-    private fun doPermissionAllGrantedWork(permissions: List<Permission>) {
-        resultText.text = getString(R.string.permission_all_granted, permissions)
+    private fun displayFragment(show: Boolean) {
+        if (show) {
+            requestFragmentContainer.visibility = View.VISIBLE
+            requestActivityButton.visibility = View.GONE
+            requestFragmentButton.visibility = View.GONE
+            requestChildFragmentButton.visibility = View.GONE
+        } else {
+            requestFragmentContainer.visibility = View.GONE
+            requestActivityButton.visibility = View.VISIBLE
+            requestFragmentButton.visibility = View.VISIBLE
+            requestChildFragmentButton.visibility = View.VISIBLE
+            supportActionBar?.setTitle(R.string.app_name)
+        }
+    }
+
+    override fun onBackPressed() {
+        if (supportFragmentManager.fragments.isNotEmpty()) {
+            displayFragment(show = false)
+            supportFragmentManager.popBackStack()
+        } else {
+            super.onBackPressed()
+        }
     }
 }
