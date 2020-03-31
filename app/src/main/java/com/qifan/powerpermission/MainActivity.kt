@@ -8,12 +8,14 @@ import com.qifan.powerpermission.activity.ExampleActivity
 import com.qifan.powerpermission.childfragment.ExampleChildContainerFragment
 import com.qifan.powerpermission.databinding.ActivityMainBinding
 import com.qifan.powerpermission.fragment.ExampleFragment
+import com.qifan.powerpermission.rx.RxJava2Activity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val requestActivityButton get() = binding.requestActivity
     private val requestFragmentButton get() = binding.requestFragment
     private val requestChildFragmentButton get() = binding.requestChildFragment
+    private val requestRxJava2Button get() = binding.requestRxjava2Activity
     private val requestFragmentContainer get() = binding.exampleFragmentContainer
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +25,13 @@ class MainActivity : AppCompatActivity() {
         requestActivityButton.setOnClickListener { navigateToRequestActivity() }
         requestFragmentButton.setOnClickListener { navigateToRequestFragment() }
         requestChildFragmentButton.setOnClickListener { navigateToRequestChildFragment() }
+        requestRxJava2Button.setOnClickListener { navigateToRxJava2Activity() }
+    }
+
+    private fun navigateToRxJava2Activity() {
+        Intent(this@MainActivity, RxJava2Activity::class.java).apply {
+            startActivity(this)
+        }
     }
 
     private fun navigateToRequestActivity() {
