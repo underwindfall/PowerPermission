@@ -4,23 +4,20 @@ import android.Manifest
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.jakewharton.rxbinding3.view.clicks
 import com.qifan.powerpermission.Permission
 import com.qifan.powerpermission.R
 import com.qifan.powerpermission.data.*
-import com.qifan.powerpermission.databinding.ActivityRx2ExmapleBinding
+import com.qifan.powerpermission.databinding.ActivityRx3ExmapleBinding
 import com.qifan.powerpermission.rationale.createDialogRationale
 import com.qifan.powerpermission.rationale.delegate.RationaleDelegate
-import com.qifan.powerpermission.rx2.askPermissions
-import io.reactivex.Completable
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
-import java.util.concurrent.TimeUnit
+import com.qifan.powerpermission.rx3.askPermissions
+import io.reactivex.rxjava3.core.Completable
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.Disposable
 
-class RxJava2Activity : AppCompatActivity() {
-    private lateinit var binding: ActivityRx2ExmapleBinding
+class RxJava3Activity : AppCompatActivity() {
+    private lateinit var binding: ActivityRx3ExmapleBinding
     private val simpleRequestButton get() = binding.simpleRequest
-    private val rxBindingRequestButton get() = binding.requestRxBinding
     private val resultText get() = binding.result
 
     private val compositeDisposable: CompositeDisposable by lazy { CompositeDisposable() }
@@ -35,11 +32,10 @@ class RxJava2Activity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityRx2ExmapleBinding.inflate(layoutInflater)
+        binding = ActivityRx3ExmapleBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setUpSimpleRequestClick()
-        setUpRxBindingClick()
-        supportActionBar?.setTitle(R.string.button_request_rxjava2)
+        supportActionBar?.setTitle(R.string.button_request_rxjava3)
     }
 
     private fun setUpSimpleRequestClick() {
@@ -52,25 +48,6 @@ class RxJava2Activity : AppCompatActivity() {
                 .subscribeAndLogError()
                 .let(compositeDisposable::add)
         }
-    }
-
-    private fun setUpRxBindingClick() {
-        rxBindingRequestButton.clicks()
-            .throttleFirst(1L, TimeUnit.SECONDS)
-            .flatMap {
-                askPermissions(
-                    Manifest.permission.CAMERA,
-                    rationaleDelegate = dialogRationaleDelegate
-                )
-            }
-            .switchMapCompletable(::handlePermissionRequest)
-            .subscribeAndLogError()
-            .let(compositeDisposable::add)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        compositeDisposable.clear()
     }
 
     private fun handlePermissionRequest(permissionResult: PermissionResult): Completable {
@@ -106,4 +83,9 @@ class RxJava2Activity : AppCompatActivity() {
     }
 
     private fun Completable.subscribeAndLogError(): Disposable = subscribe({}, ::logStreamError)
+
+    override fun onDestroy() {
+        super.onDestroy()
+        compositeDisposable.clear()
+    }
 }

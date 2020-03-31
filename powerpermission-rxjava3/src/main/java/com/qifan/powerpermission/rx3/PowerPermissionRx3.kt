@@ -1,13 +1,15 @@
-package com.qifan.powerpermission
+package com.qifan.powerpermission.rx3
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.qifan.powerpermission.*
+import com.qifan.powerpermission.checkMainThread
 import com.qifan.powerpermission.core.PERMISSION_REQUEST_CODE
 import com.qifan.powerpermission.data.Configuration
 import com.qifan.powerpermission.data.DefaultConfiguration
 import com.qifan.powerpermission.data.PermissionResult
 import com.qifan.powerpermission.rationale.delegate.RationaleDelegate
-import io.reactivex.Observable
+import io.reactivex.rxjava3.core.Observable
 
 /**
  * extension to simple usage about requesting permissions

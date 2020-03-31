@@ -2,5 +2,6 @@ rootProject.name = "PowerPermission"
 include(
         ":app",
         ":powerpermission",
-        ":powerpermission-rxjava2"
+        ":powerpermission-rxjava2",
+        ":powerpermission-rxjava3"
 )
