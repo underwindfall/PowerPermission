@@ -23,7 +23,13 @@ class ExampleChildFragment : Fragment() {
         createDialogRationale(
             R.string.rational_title,
             Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION,
-            getString(R.string.permission_rational, Manifest.permission.CAMERA)
+            getString(
+                R.string.permission_rational,
+                arrayOf(
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                )
+            )
         )
     }
 

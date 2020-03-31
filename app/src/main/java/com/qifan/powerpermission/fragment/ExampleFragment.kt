@@ -22,8 +22,8 @@ class ExampleFragment : Fragment() {
     private val dialogRationaleDelegate: RationaleDelegate by lazy {
         createDialogRationale(
             R.string.rational_title,
-            Manifest.permission.READ_CALENDAR,
-            getString(R.string.permission_rational, Manifest.permission.CAMERA)
+            Manifest.permission.CALL_PHONE,
+            getString(R.string.permission_rational, Manifest.permission.CALL_PHONE)
         )
     }
 

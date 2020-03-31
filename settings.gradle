@@ -1,3 +1,6 @@
-rootProject.name="PowerPermission"
-include ":app"
-include ":powerpermission"
+rootProject.name = "PowerPermission"
+include(
+        ":app",
+        ":powerpermission",
+        ":powerpermission-rxjava2"
+)

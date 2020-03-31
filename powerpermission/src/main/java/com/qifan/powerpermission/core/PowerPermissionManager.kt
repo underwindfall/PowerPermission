@@ -84,6 +84,7 @@ class PowerPermissionManager internal constructor() {
         rationaleDelegate: RationaleDelegate? = null,
         callback: PermissionCallback
     ) {
+        check(permissions.isNotEmpty()) { "PowerPermission requires at least one input permission" }
         PermissionParams(
             permissions = permissions.toList(),
             requestCode = requestCode,
@@ -110,6 +111,7 @@ class PowerPermissionManager internal constructor() {
         rationaleDelegate: RationaleDelegate? = null,
         callback: PermissionCallback
     ) {
+        check(permissions.isNotEmpty()) { "PowerPermission requires at least one input permission" }
         PermissionParams(
             permissions = permissions.toList(),
             requestCode = requestCode,
