@@ -2,37 +2,33 @@ package com.qifan.powerpermission.activity
 
 import android.Manifest
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.qifan.powerpermission.Permission
 import com.qifan.powerpermission.PowerPermission
 import com.qifan.powerpermission.R
-import com.qifan.powerpermission.askPermissions
 import com.qifan.powerpermission.data.*
 import com.qifan.powerpermission.databinding.ActivityExampleBinding
-import com.qifan.powerpermission.rationale.createDialogRationale
-import com.qifan.powerpermission.rationale.delegate.RationaleDelegate
 
 class ExampleActivity : AppCompatActivity() {
     private lateinit var binding: ActivityExampleBinding
     private val requestButton get() = binding.request
     private val resultText get() = binding.result
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityExampleBinding.inflate(layoutInflater)
         setContentView(binding.root)
         requestButton.setOnClickListener { requestPermissions() }
+        supportActionBar?.setTitle(R.string.button_request_activity)
     }
 
     private fun requestPermissions() {
-        PowerPermission.init(this)
+        PowerPermission.init()
             .requestPermissions(
-                Manifest.permission.CAMERA,
-                Manifest.permission.ACCESS_COARSE_LOCATION,
-                Manifest.permission.ACCESS_FINE_LOCATION,
-                Manifest.permission.READ_CALENDAR
+                context = this@ExampleActivity,
+                permissions = *arrayOf(
+                    Manifest.permission.CAMERA
+                )
             ) { permissionResult ->
                 when {
                     permissionResult.hasAllGranted() -> {
@@ -53,7 +49,7 @@ class ExampleActivity : AppCompatActivity() {
     }
 
     private fun doPermissionReasonWork(rational: List<Permission>) {
-        Log.d(this::class.java.simpleName, "reason work $rational")
+        resultText.text = getString(R.string.permission_rational, rational)
     }
 
     private fun doPermissionAllGrantedWork(permissions: List<Permission>) {

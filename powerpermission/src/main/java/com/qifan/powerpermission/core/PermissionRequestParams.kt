@@ -10,9 +10,12 @@ import com.qifan.powerpermission.rationale.delegate.RationaleDelegate
  */
 const val PERMISSION_REQUEST_CODE = 1
 
+internal typealias CleanCallback = () -> Unit
+
 internal data class PermissionParams(
     val permissions: List<Permission>,
     val requestCode: RequestCode,
     val callback: PermissionCallback,
-    val rationaleDelegate: RationaleDelegate?
+    val rationaleDelegate: RationaleDelegate?,
+    val cleanCallback: CleanCallback
 )

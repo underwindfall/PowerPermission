@@ -1,6 +1,5 @@
 package com.qifan.powerpermission
 
-import androidx.fragment.app.FragmentActivity
 import com.qifan.powerpermission.core.PowerPermissionManager
 import com.qifan.powerpermission.data.Configuration
 import com.qifan.powerpermission.data.DefaultConfiguration
@@ -19,14 +18,10 @@ object PowerPermission {
 
     /**
      * Init PowerPermission to make everything prepare to work.
-     *
-     * @param activity An instance of FragmentActivity
+     * @param configuration global configuration set custom settings in PowerPermission
      */
-    fun init(
-        activity: FragmentActivity,
-        configuration: Configuration = DefaultConfiguration()
-    ): PowerPermissionManager {
+    fun init(configuration: Configuration = DefaultConfiguration()): PowerPermissionManager {
         this.configuration = configuration
-        return PowerPermissionManager(activity)
+        return PowerPermissionManager()
     }
 }

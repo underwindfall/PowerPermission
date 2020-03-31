@@ -2,10 +2,10 @@ package com.qifan.powerpermission.fragment
 
 import android.Manifest
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.qifan.powerpermission.Permission
 import com.qifan.powerpermission.R
@@ -22,7 +22,7 @@ class ExampleFragment : Fragment() {
     private val dialogRationaleDelegate: RationaleDelegate by lazy {
         createDialogRationale(
             R.string.rational_title,
-            Manifest.permission.CAMERA,
+            Manifest.permission.READ_CALENDAR,
             getString(R.string.permission_rational, Manifest.permission.CAMERA)
         )
     }
@@ -39,13 +39,12 @@ class ExampleFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         requestButton.setOnClickListener { requestPermissions() }
+        (activity as AppCompatActivity?)?.supportActionBar?.setTitle(R.string.button_request_fragment)
     }
 
     private fun requestPermissions() {
         askPermissions(
             Manifest.permission.CAMERA,
-            Manifest.permission.ACCESS_COARSE_LOCATION,
-            Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.READ_CALENDAR,
             rationaleDelegate = dialogRationaleDelegate
         ) { permissionResult ->
@@ -68,7 +67,7 @@ class ExampleFragment : Fragment() {
     }
 
     private fun doPermissionReasonWork(rational: List<Permission>) {
-        Log.d(this::class.java.simpleName, "reason work $rational")
+        resultText.text = getString(R.string.permission_rational, rational)
     }
 
     private fun doPermissionAllGrantedWork(permissions: List<Permission>) {
