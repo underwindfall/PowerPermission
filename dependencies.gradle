@@ -35,4 +35,8 @@ ext {
     coroutinesVerison = "1.3.5"
     coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVerison"
     coroutinesAndroid  = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVerison"
+
+    //livedata
+    livedataVersion = "2.2.0"
+    livedata = "androidx.lifecycle:lifecycle-livedata:$livedataVersion"
 }
