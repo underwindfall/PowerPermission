@@ -38,6 +38,7 @@ dependencies {
     implementation project(":powerpermission")
     implementation project(":powerpermission-rxjava2")
     implementation project(":powerpermission-rxjava3")
+    implementation project(":powerpermission-coroutines")
     implementation kotlinStdlib
     implementation androidXAppCompat
     implementation constraintLayout

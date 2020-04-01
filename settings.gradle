@@ -3,5 +3,6 @@ include(
         ":app",
         ":powerpermission",
         ":powerpermission-rxjava2",
-        ":powerpermission-rxjava3"
+        ":powerpermission-rxjava3",
+        ":powerpermission-coroutines"
 )

@@ -8,6 +8,8 @@
     <string name="button_request_child_fragment">Request Child Fragment Permission</string>
     <string name="button_request_rxjava2">Request with Rxjava2</string>
     <string name="button_request_rxjava3">Request with Rxjava3</string>
+    <string name="button_request_coroutines">Request with Coroutines</string>
+    <string name="button_request_livedata">Request with Livedata</string>
     <string name="rational_title">Permission rational title</string>
     <string name="button_request">Request Permission</string>
     <string name="button_request_rx_binding">RxBinding Request Permission</string>

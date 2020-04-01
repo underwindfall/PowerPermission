@@ -11,7 +11,7 @@ import com.qifan.powerpermission.data.*
 import com.qifan.powerpermission.databinding.ActivityRx2ExmapleBinding
 import com.qifan.powerpermission.rationale.createDialogRationale
 import com.qifan.powerpermission.rationale.delegate.RationaleDelegate
-import com.qifan.powerpermission.rx2.askPermissions
+import com.qifan.powerpermission.rx2.askPermissionsRx
 import io.reactivex.Completable
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -44,7 +44,7 @@ class RxJava2Activity : AppCompatActivity() {
 
     private fun setUpSimpleRequestClick() {
         simpleRequestButton.setOnClickListener {
-            askPermissions(
+            askPermissionsRx(
                 Manifest.permission.CAMERA,
                 rationaleDelegate = dialogRationaleDelegate
             )
@@ -58,7 +58,7 @@ class RxJava2Activity : AppCompatActivity() {
         rxBindingRequestButton.clicks()
             .throttleFirst(1L, TimeUnit.SECONDS)
             .flatMap {
-                askPermissions(
+                askPermissionsRx(
                     Manifest.permission.CAMERA,
                     rationaleDelegate = dialogRationaleDelegate
                 )
