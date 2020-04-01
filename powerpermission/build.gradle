@@ -1,6 +1,7 @@
 apply plugin: "com.android.library"
 apply plugin: "kotlin-android"
 apply plugin: "kotlin-android-extensions"
+apply plugin: "de.mannodermaus.android-junit5"
 apply from: "$rootProject.projectDir/spotless.gradle"
 
 android {
@@ -25,12 +26,35 @@ android {
         }
     }
 
+    testOptions {
+        junitPlatform {
+            filters {
+                engines {
+                    include 'spek2'
+                }
+            }
+            jacocoOptions {
+                // here goes all jacoco config, for example
+                html.enabled = true
+                xml.enabled = false
+                csv.enabled = false
+            }
+        }
+        unitTests.all {
+            testLogging.events = ["passed", "skipped", "failed"]
+        }
+    }
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation kotlinStdlib
+    implementation kotlinReflect
     api androidXAppCompat
     compileOnly androidXAnnotations
-    testImplementation "junit:junit:4.13"
+    // spek
+    testImplementation assertJCore
+    testImplementation mockK
+    testImplementation spekDslJvm
+    testImplementation spekDslRunner
 }

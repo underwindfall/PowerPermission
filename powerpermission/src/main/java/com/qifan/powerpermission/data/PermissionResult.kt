@@ -11,7 +11,7 @@ import com.qifan.powerpermission.core.extension.isRational
  * permission result wrapped callback essential data
  * @param resultsSet set of permissions
  */
-data class PermissionResult(
+data class PermissionResult internal constructor(
     internal val resultsSet: Set<PermissionData>
 ) {
     internal constructor(
