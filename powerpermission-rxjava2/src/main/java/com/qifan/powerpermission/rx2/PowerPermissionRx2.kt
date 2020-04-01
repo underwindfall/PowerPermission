@@ -19,7 +19,7 @@ import io.reactivex.Observable
  * @param rationaleDelegate rationaleHandler to handle displaying reason interaction
  * @return [Observable] permission result
  */
-fun AppCompatActivity.askPermissions(
+fun AppCompatActivity.askPermissionsRx(
     vararg permissions: Permission,
     configuration: Configuration = DefaultConfiguration(),
     requestCode: RequestCode = PERMISSION_REQUEST_CODE,
@@ -46,7 +46,7 @@ fun AppCompatActivity.askPermissions(
  * @param rationaleDelegate rationaleHandler to handle displaying reason interaction
  * @return [Observable] true means all permissions granted otherwise not
  */
-fun AppCompatActivity.askPermissionsAllGranted(
+fun AppCompatActivity.askPermissionsAllGrantedRx(
     vararg permissions: Permission,
     configuration: Configuration = DefaultConfiguration(),
     requestCode: RequestCode = PERMISSION_REQUEST_CODE,
@@ -72,7 +72,7 @@ fun AppCompatActivity.askPermissionsAllGranted(
  * @param rationaleDelegate rationaleHandler to handle displaying reason interaction
  * @return [Observable] permission result
  */
-fun Fragment.askPermissions(
+fun Fragment.askPermissionsRx(
     vararg permissions: Permission,
     configuration: Configuration = DefaultConfiguration(),
     requestCode: RequestCode = PERMISSION_REQUEST_CODE,
@@ -99,7 +99,7 @@ fun Fragment.askPermissions(
  * @param rationaleDelegate rationaleHandler to handle displaying reason interaction
  * @return [Observable] true means all permissions granted otherwise not
  */
-fun Fragment.askPermissionsAllGranted(
+fun Fragment.askPermissionsAllGrantedRx(
     vararg permissions: Permission,
     configuration: Configuration = DefaultConfiguration(),
     requestCode: RequestCode = PERMISSION_REQUEST_CODE,

@@ -10,7 +10,7 @@ import com.qifan.powerpermission.data.*
 import com.qifan.powerpermission.databinding.ActivityRx3ExmapleBinding
 import com.qifan.powerpermission.rationale.createDialogRationale
 import com.qifan.powerpermission.rationale.delegate.RationaleDelegate
-import com.qifan.powerpermission.rx3.askPermissions
+import com.qifan.powerpermission.rx3.askPermissionsRx
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.disposables.Disposable
@@ -40,7 +40,7 @@ class RxJava3Activity : AppCompatActivity() {
 
     private fun setUpSimpleRequestClick() {
         simpleRequestButton.setOnClickListener {
-            askPermissions(
+            askPermissionsRx(
                 Manifest.permission.CAMERA,
                 rationaleDelegate = dialogRationaleDelegate
             )
