@@ -9,6 +9,7 @@ import com.qifan.powerpermission.childfragment.ExampleChildContainerFragment
 import com.qifan.powerpermission.coroutines.CoroutinesActivity
 import com.qifan.powerpermission.databinding.ActivityMainBinding
 import com.qifan.powerpermission.fragment.ExampleFragment
+import com.qifan.powerpermission.livedata.LiveDataActivity
 import com.qifan.powerpermission.rx.RxJava2Activity
 import com.qifan.powerpermission.rx.RxJava3Activity
 
@@ -37,7 +38,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun navigateToLiveDataActivity() {
-        Intent(this@MainActivity, CoroutinesActivity::class.java).apply {
+        Intent(this@MainActivity, LiveDataActivity::class.java).apply {
             startActivity(this)
         }
     }

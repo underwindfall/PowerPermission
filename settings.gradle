@@ -4,5 +4,6 @@ include(
         ":powerpermission",
         ":powerpermission-rxjava2",
         ":powerpermission-rxjava3",
-        ":powerpermission-coroutines"
+        ":powerpermission-coroutines",
+        ":powerpermission-livedata"
 )
