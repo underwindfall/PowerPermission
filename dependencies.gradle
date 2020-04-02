@@ -1,10 +1,3 @@
-allprojects {
-    repositories {
-        google()
-        jcenter()
-    }
-}
-
 ext {
     // APP VERSION
     androidVersionCode = 1
@@ -16,7 +9,9 @@ ext {
     androidTargetSdkVersion = 29
 
     // KOTLIN
-    kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib:${rootProject.kotlin_version}"
+    kotlinVersion = "1.3.71"
+    kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+    kotlinReflect = "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
 
     // ANDROID LIB
     androidXVersion = "1.1.0"
@@ -34,9 +29,22 @@ ext {
     //coroutines
     coroutinesVerison = "1.3.5"
     coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVerison"
-    coroutinesAndroid  = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVerison"
+    coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVerison"
 
     //livedata
     livedataVersion = "2.2.0"
     livedata = "androidx.lifecycle:lifecycle-livedata:$livedataVersion"
+
+    //spek
+    spekVersion = "2.0.10"
+    spekDslJvm = "org.spekframework.spek2:spek-dsl-jvm:$spekVersion"
+    spekDslRunner = "org.spekframework.spek2:spek-runner-junit5:$spekVersion"
+
+    //assertJ
+    assertJCoreVerison = "3.15.0"
+    assertJCore = "org.assertj:assertj-core:$assertJCoreVerison"
+
+    //mock
+    mockKVersion = "1.9.3"
+    mockK = "io.mockk:mockk:$mockKVersion"
 }
