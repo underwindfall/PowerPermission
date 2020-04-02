@@ -3,7 +3,6 @@ package com.qifan.powerpermission.rx2
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.qifan.powerpermission.*
-import com.qifan.powerpermission.checkMainThread
 import com.qifan.powerpermission.core.PERMISSION_REQUEST_CODE
 import com.qifan.powerpermission.data.Configuration
 import com.qifan.powerpermission.data.DefaultConfiguration

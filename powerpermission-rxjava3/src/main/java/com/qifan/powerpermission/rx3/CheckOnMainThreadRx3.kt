@@ -1,4 +1,4 @@
-package com.qifan.powerpermission
+package com.qifan.powerpermission.rx3
 
 import android.os.Looper
 
