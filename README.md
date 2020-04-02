@@ -25,6 +25,7 @@
 
 ## Introducation
 `PowerPermission` is a library to simplify process of demanding [RuntimePermission](https://developer.android.com/reference/java/lang/RuntimePermission).
+You find an `example application` in this Repo or downloading directly [here](https://github.com/underwindfall/PowerPermission/releases).
 Here are some different points compare with other libraries:
 - support asking permissions in `AppCompatActivity` and `Fragment(include ChildFragment)`
 - support custom rational view after user refuse permission

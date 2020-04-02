@@ -1,6 +1,7 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
+apply plugin: "com.android.library"
+apply plugin: "kotlin-android"
 apply from: "$rootProject.projectDir/spotless.gradle"
+apply plugin: "com.novoda.bintray-release"
 
 android {
     compileSdkVersion androidCompileSdkVersion
@@ -10,6 +11,8 @@ android {
         targetSdkVersion androidTargetSdkVersion
         versionCode androidVersionCode
         versionName androidVersionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     compileOptions {
@@ -26,13 +29,27 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    api project(":powerpermission")
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation project(path: ":powerpermission")
     implementation kotlinStdlib
-    api androidXAppCompat
+    implementation androidXAppCompat
     api coroutines
     api coroutinesAndroid
     testImplementation "junit:junit:4.13"
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    androidTestImplementation "androidx.test.ext:junit:1.1.1"
+    androidTestImplementation "androidx.test.espresso:espresso-core:3.2.0"
+}
+
+publish {
+    def groupProjectID = "com.qifan.powerpermission"
+    def publishVersionID = "1.0.0"
+    def artifactProjectID = "powerpermission-coroutines"
+
+    userOrg = "undervoid"
+    repoName = "PowerPermission"
+    groupId = groupProjectID
+    artifactId = artifactProjectID
+    publishVersion = publishVersionID
+    desc = "PowerPermission makes handling runtime permissions extremely easy."
+    website = "https://github.com/underwindfall/PowerPermission"
 }

@@ -3,6 +3,7 @@ apply plugin: "kotlin-android"
 apply plugin: "kotlin-android-extensions"
 apply plugin: "de.mannodermaus.android-junit5"
 apply from: "$rootProject.projectDir/spotless.gradle"
+apply plugin: "com.novoda.bintray-release"
 
 android {
     compileSdkVersion androidCompileSdkVersion
@@ -12,6 +13,8 @@ android {
         targetSdkVersion androidTargetSdkVersion
         versionCode androidVersionCode
         versionName androidVersionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     compileOptions {
@@ -50,11 +53,25 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation kotlinStdlib
     implementation kotlinReflect
-    api androidXAppCompat
+    implementation androidXAppCompat
     compileOnly androidXAnnotations
     // spek
     testImplementation assertJCore
     testImplementation mockK
     testImplementation spekDslJvm
     testImplementation spekDslRunner
+}
+
+publish {
+    def groupProjectID = "com.qifan.powerpermission"
+    def publishVersionID = "1.0.0"
+    def artifactProjectID = "powerpermission"
+
+    userOrg = "undervoid"
+    repoName = "PowerPermission"
+    groupId = groupProjectID
+    artifactId = artifactProjectID
+    publishVersion = publishVersionID
+    desc = "PowerPermission makes handling runtime permissions extremely easy."
+    website = "https://github.com/underwindfall/PowerPermission"
 }
