@@ -31,6 +31,9 @@ Here are some different points compare with other libraries:
 - support ability to choose permissions to display rational views
 - support different interface (RxJava2,RxJava3,Coroutines,LiveData)
 
+<div align="left" style="display:inline;">
+  <img width="200" height="360" src="https://raw.githubusercontent.com/underwindfall/blogAssets/master/lib/PowerPermission/example.gif"/>
+</div>
 
 ## How to Download
 ### Basic

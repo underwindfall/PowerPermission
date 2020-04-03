@@ -30,6 +30,10 @@
 - 可自主选择那些权限再次显示解释界面
 - 支持多种接口配置(RxJava2和RxJava3,Coroutines,LiveData)
 
+<div align="left" style="display:inline;">
+  <img width="200" height="360" src="https://raw.githubusercontent.com/underwindfall/blogAssets/master/lib/PowerPermission/example.gif"/>
+</div>
+
 ## 配置方法
 ### 基础库
 ```groovy
