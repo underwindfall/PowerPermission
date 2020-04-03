@@ -24,12 +24,16 @@
   * [License](#license)
 ## 简介
 `PowerPermission` 主要针对 `Android` 开发者在面对请求[RuntimePermission](https://developer.android.com/reference/java/lang/RuntimePermission)时的复杂流程的使用进行简化，来提高代码的便携效率。
-在这个Repo已经有个示例的`application`或者你可以通过这个[链接](https://github.com/underwindfall/PowerPermission/releases)直接下载APK.
+> 在这个Repo已经有个示例的`application`或者你可以通过这个[链接](https://github.com/underwindfall/PowerPermission/releases)直接下载APK.
 它和其他的第三方请求库不同的有以下几点:
 - 可在 `AppCompatActivity` 和 `Fragment(包括ChildFragment)` 中请求
 - 不固定了用户拒绝权限后的说明内容表现形式，可自行化定制
 - 可自主选择那些权限再次显示解释界面
 - 支持多种接口配置(RxJava2和RxJava3,Coroutines,LiveData)
+
+<div align="left" style="display:inline">
+<img width="200" height="450" src="https://raw.githubusercontent.com/underwindfall/blogAssets/master/lib/PowerPermission/example.gif">
+</div>
 
 ## 配置方法
 ### 基础库

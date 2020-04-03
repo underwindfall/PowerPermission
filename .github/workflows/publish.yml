@@ -6,7 +6,7 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntun-latest
+    runs-on: ubuntu-18.04
     steps:
 
       - name: Checkout
@@ -17,18 +17,8 @@ jobs:
         with:
           java-version: 1.8
 
-      - name: Set Env
-        run: echo ::set-env name=RELEASE_VERSION::${GITHUB_REF:10}
-
       - name: Build and deploy
         run: ./gradlew clean build bintrayUpload  -PbintrayUser=${{secrets.JCENTER_NAME}}  -PbintrayKey=${{secrets.JCENTER_TOKEN}}  -PdryRun=false
-
-      - name: Update Release Example.apk
-        uses: ShaunLWM/action-release-debugapk@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-          APP_FOLDER: app
-          RELEASE_TITLE: ${{ env.RELEASE_VERSION }}
 
       - name: Notification Slack
         uses: homoluctus/slatify@v2.1.2
@@ -40,6 +30,6 @@ jobs:
           mention_if: 'failure'
           icon_emoji: ':rocket:'
           channel: '#android-apps-website'
-          url: ${{secrets.SLACK_WEBHOOK_URL}}
+          url: ${{ secrets.SLACK_WEBHOOK_URL }}
           commit: true
-          token: ${{secrets.CI_LIB_TOKEN}}
+          token: ${{ secrets.CI_LIB_TOKEN }}
