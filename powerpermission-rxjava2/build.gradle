@@ -39,15 +39,13 @@ dependencies {
 }
 
 publish {
-    def groupProjectID = "com.qifan.powerpermission"
-    def publishVersionID = "1.0.0"
     def artifactProjectID = "powerpermission-rxjava2"
 
-    userOrg = "undervoid"
-    repoName = "PowerPermission"
+    userOrg = userName
+    repoName = libName
     groupId = groupProjectID
     artifactId = artifactProjectID
     publishVersion = publishVersionID
-    desc = "PowerPermission makes handling runtime permissions extremely easy."
-    website = "https://github.com/underwindfall/PowerPermission"
+    desc = descriptionLib
+    website = websiteLib
 }

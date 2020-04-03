@@ -1,4 +1,7 @@
 # PowerPermission
+[ ![jCenter](https://api.bintray.com/packages/undervoid/PowerPermission/powerpermission/images/download.svg) ](https://bintray.com/undervoid/maven/Powerpermission/powerpermission/_latestVersion)
+[![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg?style=flat-square)](https://www.apache.org/licenses/LICENSE-2.0.html)
+![Android Check CI](https://github.com/underwindfall/PowerPermission/workflows/Android%20Check%20CI/badge.svg)
 #### [English Documentation](https://github.com/underwindfall/PowerPermission) | 中文文档
 
 ## 目录
@@ -22,6 +25,7 @@
       - [自定义解释界面](#-------)
       - [Choose those permissions are rational](#choose-those-permissions-are-rational)
   * [License](#license)
+
 ## 简介
 `PowerPermission` 主要针对 `Android` 开发者在面对请求[RuntimePermission](https://developer.android.com/reference/java/lang/RuntimePermission)时的复杂流程的使用进行简化，来提高代码的便携效率。
 > 在这个Repo已经有个示例的`application`或者你可以通过这个[链接](https://github.com/underwindfall/PowerPermission/releases)直接下载APK.

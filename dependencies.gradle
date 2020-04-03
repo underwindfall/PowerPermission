@@ -47,4 +47,12 @@ ext {
     //mock
     mockKVersion = "1.9.3"
     mockK = "io.mockk:mockk:$mockKVersion"
+
+
+    publishVersionID = "1.0.0"
+    groupProjectID = "com.qifan.powerpermission"
+    userName = "undervoid"
+    libName = "PowerPermission"
+    descriptionLib = "PowerPermission makes handling runtime permissions extremely easy."
+    websiteLib = "https://github.com/underwindfall/PowerPermission"
 }

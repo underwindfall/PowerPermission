@@ -33,7 +33,9 @@ class PowerPermissionManager internal constructor() {
                     "Created new PermissionFragment for %s",
                     fragmentActivity::class.java.simpleName
                 )
-                fragmentActivity.transact { add(this@apply, TAG_ACTIVITY) }
+                fragmentActivity.transact {
+                    add(this@apply, TAG_ACTIVITY)
+                }
             }
         } else {
             debug(
@@ -52,7 +54,9 @@ class PowerPermissionManager internal constructor() {
                     "Created new PermissionFragment for %s",
                     fragment::class.java.simpleName
                 )
-                fragment.transact { add(this@apply, TAG_FRAGMENT) }
+                fragment.transact {
+                    add(this@apply, TAG_FRAGMENT)
+                }
             }
         } else {
             debug(
