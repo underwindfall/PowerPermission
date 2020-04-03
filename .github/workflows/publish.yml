@@ -31,15 +31,15 @@ jobs:
           RELEASE_TITLE: ${{ env.RELEASE_VERSION }}
 
       - name: Notification Slack
-          uses: homoluctus/slatify@v2.1.2
-          if: always()
-          with:
-            type: ${{ job.status }}
-            job_name: 'Deployment Notification'
-            mention: 'here'
-            mention_if: 'failure'
-            icon_emoji: ':rocket:'
-            channel: '#android-apps-website'
-            url: ${{secrets.SLACK_WEBHOOK_URL}}
-            commit: true
-            token: ${{secrets.CI_LIB_TOKEN}} 
+        uses: homoluctus/slatify@v2.1.2
+        if: always()
+        with:
+          type: ${{ job.status }}
+          job_name: 'Deployment Notification'
+          mention: 'here'
+          mention_if: 'failure'
+          icon_emoji: ':rocket:'
+          channel: '#android-apps-website'
+          url: ${{secrets.SLACK_WEBHOOK_URL}}
+          commit: true
+          token: ${{secrets.CI_LIB_TOKEN}}
