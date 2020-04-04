@@ -30,25 +30,13 @@ jobs:
       - name: Get the version
         id: get_version
         run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
-
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
+      
+      - name: Create Release and Upload debug APK
+        uses: underwindfall/create-release-with-debugapk@v1.2.4
+        env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ steps.get_version.outputs.VERSION }}
           release_name: Release ${{ steps.get_version.outputs.VERSION }}
           draft: false
           prerelease: false
-
-      - name: Upload Debug APK
-        id: upload_release-asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: app/build/outputs/apk/debug/app-debug.apk
-          asset_name: Example.apk
-          asset_content_type: application/zip
