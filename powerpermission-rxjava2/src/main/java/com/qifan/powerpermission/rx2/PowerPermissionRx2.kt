@@ -1,8 +1,26 @@
+/**
+ * Copyright (C) 2020 by Qifan YANG (@underwindfall)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.qifan.powerpermission.rx2
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.qifan.powerpermission.*
+import com.qifan.powerpermission.Permission
+import com.qifan.powerpermission.RequestCode
+import com.qifan.powerpermission.askPermissions
+import com.qifan.powerpermission.askPermissionsAllGranted
 import com.qifan.powerpermission.core.PERMISSION_REQUEST_CODE
 import com.qifan.powerpermission.data.Configuration
 import com.qifan.powerpermission.data.DefaultConfiguration

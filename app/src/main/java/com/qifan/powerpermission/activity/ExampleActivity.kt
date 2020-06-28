@@ -1,3 +1,18 @@
+/**
+ * Copyright (C) 2020 by Qifan YANG (@underwindfall)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.qifan.powerpermission.activity
 
 import android.Manifest
@@ -6,7 +21,12 @@ import androidx.appcompat.app.AppCompatActivity
 import com.qifan.powerpermission.Permission
 import com.qifan.powerpermission.PowerPermission
 import com.qifan.powerpermission.R
-import com.qifan.powerpermission.data.*
+import com.qifan.powerpermission.data.granted
+import com.qifan.powerpermission.data.hasAllGranted
+import com.qifan.powerpermission.data.hasPermanentDenied
+import com.qifan.powerpermission.data.hasRational
+import com.qifan.powerpermission.data.permanentDenied
+import com.qifan.powerpermission.data.rational
 import com.qifan.powerpermission.databinding.ActivityExampleBinding
 
 class ExampleActivity : AppCompatActivity() {
