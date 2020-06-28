@@ -42,23 +42,23 @@
 ## 配置方法
 ### 基础库
 ```groovy
-implementation "com.qifan.powerpermission:powerpermission:1.0.0"
+implementation "com.qifan.powerpermission:powerpermission:1.2.0"
 ```
 ### 不同的其他接口配置
 ```groovy
-implementation "com.qifan.powerpermission:powerpermission-rxjava2:1.0.0"
-implementation "com.qifan.powerpermission:powerpermission-rxjava3:1.0.0"
-implementation "com.qifan.powerpermission:powerpermission-coroutines:1.0.0"
-implementation "com.qifan.powerpermission:powerpermission-livedata:1.0.0"
+implementation "com.qifan.powerpermission:powerpermission-rxjava2:1.2.0"
+implementation "com.qifan.powerpermission:powerpermission-rxjava3:1.2.0"
+implementation "com.qifan.powerpermission:powerpermission-coroutines:1.2.0"
+implementation "com.qifan.powerpermission:powerpermission-livedata:1.2.0"
 ```
 ### 总结
 |  Package Name     |     Role      | Usage |
 | ------------- |-------------|-------------|
-| powerpermission            | Basic core package       | implementation "com.qifan.powerpermission:powerpermission:1.0.0" |
-| powerpermission-rxjava2    | Support RxJava2          | implementation "com.qifan.powerpermission:powerpermission-rxjava2:1.0.0" |
-| powerpermission-rxjava3    | Support RxJava3          | implementation "com.qifan.powerpermission:powerpermission-rxjava3:1.0.0" |
-| powerpermission-coroutines | Support Kotlin Coroutine | implementation "com.qifan.powerpermission:powerpermission-coroutines:1.0.0" |
-| powerpermission-livedata   | Support Android LiveData | implementation "com.qifan.powerpermission:powerpermission-livedata:1.0.0" |
+| powerpermission            | Basic core package       | implementation "com.qifan.powerpermission:powerpermission:1.2.0" |
+| powerpermission-rxjava2    | Support RxJava2          | implementation "com.qifan.powerpermission:powerpermission-rxjava2:1.2.0" |
+| powerpermission-rxjava3    | Support RxJava3          | implementation "com.qifan.powerpermission:powerpermission-rxjava3:1.2.0" |
+| powerpermission-coroutines | Support Kotlin Coroutine | implementation "com.qifan.powerpermission:powerpermission-coroutines:1.2.0" |
+| powerpermission-livedata   | Support Android LiveData | implementation "com.qifan.powerpermission:powerpermission-livedata:1.2.0" |
 
 ## 使用方法
 
