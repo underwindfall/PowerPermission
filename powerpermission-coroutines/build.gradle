@@ -1,6 +1,6 @@
 apply plugin: "com.android.library"
 apply plugin: "kotlin-android"
-apply plugin: "com.novoda.bintray-release"
+
 
 android {
     compileSdkVersion androidCompileSdkVersion
@@ -39,14 +39,14 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:3.2.0"
 }
 
-publish {
-    def artifactProjectID = "powerpermission-coroutines"
-
-    userOrg = userName
-    repoName = libName
-    groupId = groupProjectID
-    artifactId = artifactProjectID
-    publishVersion = publishVersionID
-    desc = descriptionLib
-    website = websiteLib
-}
+//publish {
+//    def artifactProjectID = "powerpermission-coroutines"
+//
+//    userOrg = userName
+//    repoName = libName
+//    groupId = groupProjectID
+//    artifactId = artifactProjectID
+//    publishVersion = publishVersionID
+//    desc = descriptionLib
+//    website = websiteLib
+//}

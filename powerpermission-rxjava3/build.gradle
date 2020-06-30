@@ -1,7 +1,7 @@
 apply plugin: "com.android.library"
 apply plugin: "kotlin-android"
 apply plugin: "kotlin-android-extensions"
-apply plugin: "com.novoda.bintray-release"
+
 
 android {
     compileSdkVersion androidCompileSdkVersion
@@ -38,14 +38,14 @@ dependencies {
     testImplementation "junit:junit:4.13"
 }
 
-publish {
-    def artifactProjectID = "powerpermission-rxjava3"
-
-    userOrg = userName
-    repoName = libName
-    groupId = groupProjectID
-    artifactId = artifactProjectID
-    publishVersion = publishVersionID
-    desc = descriptionLib
-    website = websiteLib
-}
+//publish {
+//    def artifactProjectID = "powerpermission-rxjava3"
+//
+//    userOrg = userName
+//    repoName = libName
+//    groupId = groupProjectID
+//    artifactId = artifactProjectID
+//    publishVersion = publishVersionID
+//    desc = descriptionLib
+//    website = websiteLib
+//}
