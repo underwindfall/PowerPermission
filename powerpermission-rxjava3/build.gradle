@@ -1,7 +1,8 @@
 apply plugin: "com.android.library"
 apply plugin: "kotlin-android"
 apply plugin: "kotlin-android-extensions"
-apply plugin: "com.novoda.bintray-release"
+apply plugin: "maven-publish"
+apply plugin: "com.jfrog.bintray"
 
 android {
     compileSdkVersion androidCompileSdkVersion
@@ -38,14 +39,70 @@ dependencies {
     testImplementation "junit:junit:4.13"
 }
 
-publish {
-    def artifactProjectID = "powerpermission-rxjava3"
+// Avoid Kotlin docs error
+tasks.withType(Javadoc) {
+    enabled = false
+}
 
-    userOrg = userName
-    repoName = libName
-    groupId = groupProjectID
-    artifactId = artifactProjectID
-    publishVersion = publishVersionID
-    desc = descriptionLib
-    website = websiteLib
+// Remove javadoc related tasks
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                groupId = groupProjectID
+                artifactId = "powerpermission-rxjava3"
+                version = publishVersionID
+                pom {
+                    name = libName
+                    description = descriptionLib
+                    url = websiteLib
+                    developers {
+                        developer {
+                            id = userId
+                            name = userName
+                        }
+                    }
+                    scm {
+                        connection = gitUrl
+                        developerConnection = gitUrl
+                        url = websiteLib
+                    }
+                }
+            }
+        }
+    }
+}
+
+bintray {
+    user = System.getenv("bintrayUser")
+    key = System.getenv("bintrayApiKey")
+
+    configurations = ['archives']
+    pkg {
+        repo = "maven"
+        name = libName
+        websiteUrl = websiteLib
+        vcsUrl = gitUrl
+        licenses = ['Apache-2.0']
+        publish = true
+    }
 }

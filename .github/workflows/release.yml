@@ -43,3 +43,24 @@ jobs:
           asset_content_type: application/zip
           draft: false
           prerelease: false
+      
+      - name: Upload Library
+        env:
+          bintrayUser: ${{secrets.JCENTER_NAME}}
+          bintrayApiKey: ${{secrets.JCENTER_TOKEN}}
+        run: ./gradlew bintrayUpload
+      
+      - name: Notification Slack
+        uses: homoluctus/slatify@v2.1.2
+        if: always()
+        with:
+          type: ${{ job.status }}
+          job_name: 'Deployment Notification'
+          mention: 'here'
+          mention_if: 'failure'
+          icon_emoji: ':rocket:'
+          channel: '#android-apps-website'
+          url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          commit: true
+          token: ${{ secrets.CI_LIB_TOKEN }}  
+    

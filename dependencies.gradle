@@ -51,8 +51,11 @@ ext {
 
     publishVersionID = "1.1.1"
     groupProjectID = "com.qifan.powerpermission"
-    userName = "undervoid"
+    userName = "Qifan YANG"
+    userId = "underwindfall"
     libName = "PowerPermission"
     descriptionLib = "PowerPermission makes handling runtime permissions extremely easy."
     websiteLib = "https://github.com/underwindfall/PowerPermission"
+    gitUrl = "https://github.com/underwindfall/PowerPermission.git"
+    licenseUrl = "https://github.com/underwindfall/PowerPermission/blob/master/LICENSE"
 }
