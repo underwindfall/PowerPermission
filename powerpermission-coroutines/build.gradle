@@ -60,10 +60,6 @@ task androidSourcesJar(type: Jar) {
     from android.sourceSets.main.java.source
 }
 
-artifacts {
-    archives androidSourcesJar
-    archives androidJavadocsJar
-}
 
 afterEvaluate {
     publishing {
@@ -72,6 +68,8 @@ afterEvaluate {
                 groupId = groupProjectID
                 artifactId = "powerpermission-coroutines"
                 version = publishVersionID
+                artifact androidSourcesJar
+                artifact androidJavadocsJar
                 pom {
                     name = libName
                     description = descriptionLib
@@ -104,7 +102,6 @@ bintray {
     user = System.getenv("bintrayUser")
     key = System.getenv("bintrayApiKey")
 
-    configurations = ['archives']
     pkg {
         repo = "PowerPermission"
         name = "powerpermission-coroutines"
@@ -112,9 +109,9 @@ bintray {
         vcsUrl = gitUrl
         licenses = ['Apache-2.0']
         publish = true
-    }
-
-    version {
-        name = publishVersionID
+        version {
+            name = publishVersionID
+        }
+        publications = ['release']
     }
 }
