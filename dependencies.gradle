@@ -1,7 +1,7 @@
 ext {
     // APP VERSION
     androidVersionCode = 1
-    androidVersionName = "1.1.1"
+    androidVersionName = "1.2.0"
 
     // ANDROID VERSION
     androidCompileSdkVersion = 29
@@ -49,7 +49,7 @@ ext {
     mockK = "io.mockk:mockk:$mockKVersion"
 
 
-    publishVersionID = "1.1.1"
+    publishVersionID = "1.2.0"
     groupProjectID = "com.qifan.powerpermission"
     userName = "Qifan YANG"
     userId = "underwindfall"
