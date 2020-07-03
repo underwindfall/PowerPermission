@@ -97,7 +97,7 @@ bintray {
 
     configurations = ['archives']
     pkg {
-        repo = "maven"
+        repo = "PowerPermission"
         name = libName
         websiteUrl = websiteLib
         vcsUrl = gitUrl
