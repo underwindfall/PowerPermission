@@ -39,29 +39,28 @@ dependencies {
     testImplementation "junit:junit:4.13"
 }
 
-// Avoid Kotlin docs error
-tasks.withType(Javadoc) {
+tasks.withType(Javadoc).all {
     enabled = false
 }
 
-// Remove javadoc related tasks
-task javadoc(type: Javadoc) {
-    source = android.sourceSets.main.java.srcDirs
+task androidJavadocs(type: Javadoc) {
+    source = android.sourceSets.main.java.source
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
 }
 
-task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
+task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
+    classifier = 'javadoc'
+    from androidJavadocs.destinationDir
 }
 
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.source
 }
+
 artifacts {
-    archives javadocJar
-    archives sourcesJar
+    archives androidSourcesJar
+    archives androidJavadocsJar
 }
 
 afterEvaluate {
@@ -81,12 +80,19 @@ afterEvaluate {
                             name = userName
                         }
                     }
+                    licenses {
+                        license {
+                            name = "The Apache License, Version 2.0"
+                            url = "www.apache.org/licenses/LICENSE-2.0.txt"
+                        }
+                    }
                     scm {
                         connection = gitUrl
                         developerConnection = gitUrl
                         url = websiteLib
                     }
                 }
+                from components.release
             }
         }
     }
@@ -99,10 +105,13 @@ bintray {
     configurations = ['archives']
     pkg {
         repo = "PowerPermission"
-        name = libName
+        name = "powerpermission-rxjava3"
         websiteUrl = websiteLib
         vcsUrl = gitUrl
         licenses = ['Apache-2.0']
         publish = true
+    }
+    version {
+        name = publishVersionID
     }
 }
