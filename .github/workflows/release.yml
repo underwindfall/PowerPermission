@@ -45,7 +45,10 @@ jobs:
           prerelease: false
       
       - name: Upload Library
-        run: ./gradlew clean build bintrayUpload  -PbintrayUser=${{secrets.JCENTER_NAME}}  -PbintrayKey=${{secrets.JCENTER_TOKEN}}  -PdryRun=false    
+        env:
+          bintrayUser: ${{secrets.JCENTER_NAME}}
+          bintrayApiKey: ${{secrets.JCENTER_TOKEN}}
+        run: ./gradlew bintrayUpload
       
       - name: Notification Slack
         uses: homoluctus/slatify@v2.1.2

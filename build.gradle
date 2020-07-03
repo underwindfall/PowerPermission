@@ -6,13 +6,11 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:3.6.2"
+        classpath "com.android.tools.build:gradle:4.0.0"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         classpath "com.diffplug.spotless:spotless-plugin-gradle:4.3.1"
         classpath "de.mannodermaus.gradle.plugins:android-junit5:1.5.2.0"
-//        classpath "com.novoda:bintray-release:0.9.2"
         classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4"
-        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.9.3"
     }
 }
 apply {
