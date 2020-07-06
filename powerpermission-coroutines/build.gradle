@@ -97,13 +97,17 @@ afterEvaluate {
         }
     }
 }
+Properties properties = new Properties()
+def isLocal = project.rootProject.file("local.properties").exists()
+if (isLocal) {
+    properties.load(project.rootProject.file("local.properties").newDataInputStream())
+}
 
 bintray {
-    user = System.getenv("bintrayUser")
-    key = System.getenv("bintrayApiKey")
-
+    user = !isLocal ? System.getenv("bintrayUser") : properties.getProperty("bintrayUser")
+    key = !isLocal ? System.getenv("bintrayApiKey") : properties.getProperty("bintrayApiKey")
     pkg {
-        repo = "PowerPermission"
+        repo = "maven"
         name = "powerpermission-coroutines"
         websiteUrl = websiteLib
         vcsUrl = gitUrl
