@@ -42,14 +42,14 @@
 ## 配置方法
 ### 基础库
 ```groovy
-implementation "com.qifan.powerpermission:powerpermission:1.2.0"
+implementation "com.qifan.powerpermission:powerpermission:1.3.0"
 ```
 ### 不同的其他接口配置
 ```groovy
-implementation "com.qifan.powerpermission:powerpermission-rxjava2:1.2.0"
-implementation "com.qifan.powerpermission:powerpermission-rxjava3:1.2.0"
-implementation "com.qifan.powerpermission:powerpermission-coroutines:1.2.0"
-implementation "com.qifan.powerpermission:powerpermission-livedata:1.2.0"
+implementation "com.qifan.powerpermission:powerpermission-rxjava2:1.3.0"
+implementation "com.qifan.powerpermission:powerpermission-rxjava3:1.3.0"
+implementation "com.qifan.powerpermission:powerpermission-coroutines:1.3.0"
+implementation "com.qifan.powerpermission:powerpermission-livedata:1.3.0"
 ```
 ### 总结
 |  Package Name     |     Role      | Usage |
