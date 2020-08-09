@@ -1,4 +1,4 @@
-apply plugin: "com.diffplug.gradle.spotless"
+apply plugin: "com.diffplug.spotless"
 
 spotless {
     java {
@@ -18,5 +18,10 @@ spotless {
         trimTrailingWhitespace()
         endWithNewline()
         licenseHeaderFile rootProject.file('spotless/copyright.kt')
+    }
+    groovyGradle {
+        target "**/*.gradle"
+        trimTrailingWhitespace()
+        endWithNewline()
     }
 }
