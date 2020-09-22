@@ -8,10 +8,10 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:4.0.1"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
-        classpath "com.diffplug.spotless:spotless-plugin-gradle:5.1.1"
+        classpath "com.diffplug.spotless:spotless-plugin-gradle:5.6.1"
         classpath "de.mannodermaus.gradle.plugins:android-junit5:1.6.2.0"
         classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.5"
-        classpath("com.github.ben-manes:gradle-versions-plugin:0.29.0")
+        classpath("com.github.ben-manes:gradle-versions-plugin:0.33.0")
     }
 }
 apply {
