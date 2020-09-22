@@ -69,7 +69,6 @@ data class PermissionData(
 @CheckResult
 fun PermissionResult.hasAllGranted(): Boolean {
     return resultsSet
-        .asSequence()
         .all { it.isGranted() }
 }
 
@@ -77,7 +76,6 @@ fun PermissionResult.hasAllGranted(): Boolean {
 @CheckResult
 fun PermissionResult.hasRational(): Boolean {
     return resultsSet
-        .asSequence()
         .any { it.isRational() }
 }
 
@@ -85,7 +83,6 @@ fun PermissionResult.hasRational(): Boolean {
 @CheckResult
 fun PermissionResult.hasPermanentDenied(): Boolean {
     return resultsSet
-        .asSequence()
         .any { it.isPermanentDenied() }
 }
 

@@ -45,7 +45,7 @@ fun AppCompatActivity.askPermissionsRx(
     checkMainThread()
     return Observable.create { emitter ->
         askPermissions(
-            permissions = *permissions,
+            permissions = permissions,
             configuration = configuration,
             requestCode = requestCode,
             rationaleDelegate = rationaleDelegate
@@ -71,7 +71,7 @@ fun AppCompatActivity.askPermissionsAllGrantedRx(
 ): Observable<Boolean> {
     return Observable.create { emitter ->
         askPermissionsAllGranted(
-            permissions = *permissions,
+            permissions = permissions,
             configuration = configuration,
             requestCode = requestCode,
             rationaleDelegate = rationaleDelegate
@@ -98,7 +98,7 @@ fun Fragment.askPermissionsRx(
     checkMainThread()
     return Observable.create { emitter ->
         askPermissions(
-            permissions = *permissions,
+            permissions = permissions,
             configuration = configuration,
             requestCode = requestCode,
             rationaleDelegate = rationaleDelegate
@@ -124,7 +124,7 @@ fun Fragment.askPermissionsAllGrantedRx(
 ): Observable<Boolean> {
     return Observable.create { emitter ->
         askPermissionsAllGranted(
-            permissions = *permissions,
+            permissions = permissions,
             configuration = configuration,
             requestCode = requestCode,
             rationaleDelegate = rationaleDelegate

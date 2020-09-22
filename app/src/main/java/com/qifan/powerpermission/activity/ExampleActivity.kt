@@ -46,7 +46,7 @@ class ExampleActivity : AppCompatActivity() {
         PowerPermission.init()
             .requestPermissions(
                 context = this@ExampleActivity,
-                permissions = *arrayOf(
+                permissions = arrayOf(
                     Manifest.permission.CAMERA
                 )
             ) { permissionResult ->

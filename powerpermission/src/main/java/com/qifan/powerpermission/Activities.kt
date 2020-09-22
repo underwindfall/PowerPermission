@@ -40,7 +40,7 @@ fun AppCompatActivity.askPermissions(
     PowerPermission.init(configuration)
         .requestPermissions(
             context = this,
-            permissions = *permissions,
+            permissions = permissions,
             requestCode = requestCode,
             rationaleDelegate = rationaleDelegate,
             callback = callback
@@ -65,7 +65,7 @@ fun AppCompatActivity.askPermissionsAllGranted(
     PowerPermission.init(configuration)
         .requestPermissions(
             context = this,
-            permissions = *permissions,
+            permissions = permissions,
             requestCode = requestCode,
             rationaleDelegate = rationaleDelegate
         ) { permissionResults ->

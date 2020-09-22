@@ -43,7 +43,7 @@ fun AppCompatActivity.observeAskPermissions(
 ): MutableLiveData<PermissionResult> {
     val mLiveData = MutableLiveData<PermissionResult>()
     askPermissions(
-        permissions = *permissions,
+        permissions = permissions,
         configuration = configuration,
         requestCode = requestCode,
         rationaleDelegate = rationaleDelegate
@@ -68,7 +68,7 @@ fun AppCompatActivity.observeAskPermissionsAllGranted(
 ): MutableLiveData<Boolean> {
     val mLiveData = MutableLiveData<Boolean>()
     askPermissionsAllGranted(
-        permissions = *permissions,
+        permissions = permissions,
         configuration = configuration,
         requestCode = requestCode,
         rationaleDelegate = rationaleDelegate
@@ -93,7 +93,7 @@ fun Fragment.observeAskPermissions(
 ): MutableLiveData<PermissionResult> {
     val mLiveData = MutableLiveData<PermissionResult>()
     askPermissions(
-        permissions = *permissions,
+        permissions = permissions,
         configuration = configuration,
         requestCode = requestCode,
         rationaleDelegate = rationaleDelegate
@@ -118,7 +118,7 @@ fun Fragment.observeAskPermissionsAllGranted(
 ): MutableLiveData<Boolean> {
     val mLiveData = MutableLiveData<Boolean>()
     askPermissionsAllGranted(
-        permissions = *permissions,
+        permissions = permissions,
         configuration = configuration,
         requestCode = requestCode,
         rationaleDelegate = rationaleDelegate

@@ -45,7 +45,7 @@ suspend fun AppCompatActivity.awaitAskPermissions(
     checkMainThread()
     return suspendCancellableCoroutine { continuation ->
         askPermissions(
-            permissions = *permissions,
+            permissions = permissions,
             configuration = configuration,
             requestCode = requestCode,
             rationaleDelegate = rationaleDelegate
@@ -70,7 +70,7 @@ suspend fun AppCompatActivity.awaitAskPermissionsAllGranted(
 ): Boolean {
     return suspendCancellableCoroutine { continuation ->
         askPermissionsAllGranted(
-            permissions = *permissions,
+            permissions = permissions,
             configuration = configuration,
             requestCode = requestCode,
             rationaleDelegate = rationaleDelegate
@@ -96,7 +96,7 @@ suspend fun Fragment.awaitAskPermissions(
     checkMainThread()
     return suspendCancellableCoroutine { continuation ->
         askPermissions(
-            permissions = *permissions,
+            permissions = permissions,
             configuration = configuration,
             requestCode = requestCode,
             rationaleDelegate = rationaleDelegate
@@ -121,7 +121,7 @@ suspend fun Fragment.awaitAskPermissionsAllGranted(
 ): Boolean {
     return suspendCancellableCoroutine { continuation ->
         askPermissionsAllGranted(
-            permissions = *permissions,
+            permissions = permissions,
             configuration = configuration,
             requestCode = requestCode,
             rationaleDelegate = rationaleDelegate

@@ -36,7 +36,7 @@ interface RationaleDelegate {
      */
     fun showRationale(request: PermissionRequest, requestCode: RequestCode) {
         displayRationale(
-            permission = *data
+            permission = data
                 .getRationalePermission()
                 .toTypedArray(),
             message = data.message,
