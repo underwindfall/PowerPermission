@@ -6,12 +6,12 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.0.1"
+        classpath 'com.android.tools.build:gradle:4.1.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
-        classpath "com.diffplug.spotless:spotless-plugin-gradle:5.6.1"
+        classpath "com.diffplug.spotless:spotless-plugin-gradle:5.8.0"
         classpath "de.mannodermaus.gradle.plugins:android-junit5:1.6.2.0"
         classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.5"
-        classpath("com.github.ben-manes:gradle-versions-plugin:0.33.0")
+        classpath("com.github.ben-manes:gradle-versions-plugin:0.35.0")
     }
 }
 apply {

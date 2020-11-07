@@ -36,7 +36,7 @@ dependencies {
     implementation kotlinStdlib
     implementation androidXAppCompat
     api livedata
-    testImplementation "junit:junit:4.13"
+    testImplementation "junit:junit:4.13.1"
 }
 
 tasks.withType(Javadoc).all {
