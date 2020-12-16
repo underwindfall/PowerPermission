@@ -9,7 +9,7 @@ ext {
     androidTargetSdkVersion = 29
 
     // KOTLIN
-    kotlinVersion = "1.4.10"
+    kotlinVersion = "1.4.21"
     kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
     kotlinReflect = "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
 
@@ -22,12 +22,12 @@ ext {
 
     //rx
     rxjava2Version = "2.2.20"
-    rxjava3Version = "3.0.7"
+    rxjava3Version = "3.0.8"
     rxjava2 = "io.reactivex.rxjava2:rxjava:$rxjava2Version"
     rxjava3 = "io.reactivex.rxjava3:rxjava:$rxjava3Version"
 
     //coroutines
-    coroutinesVerison = "1.4.1"
+    coroutinesVerison = "1.4.2"
     coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVerison"
     coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVerison"
 
@@ -36,16 +36,16 @@ ext {
     livedata = "androidx.lifecycle:lifecycle-livedata:$livedataVersion"
 
     //spek
-    spekVersion = "2.0.13"
+    spekVersion = "2.0.15"
     spekDslJvm = "org.spekframework.spek2:spek-dsl-jvm:$spekVersion"
     spekDslRunner = "org.spekframework.spek2:spek-runner-junit5:$spekVersion"
 
     //assertJ
-    assertJCoreVerison = "3.18.0"
+    assertJCoreVerison = "3.18.1"
     assertJCore = "org.assertj:assertj-core:$assertJCoreVerison"
 
     //mock
-    mockKVersion = "1.10.2"
+    mockKVersion = "1.10.3"
     mockK = "io.mockk:mockk:$mockKVersion"
 
 
