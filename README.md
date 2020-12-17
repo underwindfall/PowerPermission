@@ -42,23 +42,23 @@ Here are some different points compare with other libraries:
 ## How to Download
 ### Basic
 ```groovy
-implementation "com.qifan.powerpermission:powerpermission:1.3.0"
+implementation "com.qifan.powerpermission:powerpermission:1.4.0"
 ```
 ### Other API Support
 ```groovy
-implementation "com.qifan.powerpermission:powerpermission-rxjava2:1.3.0"
-implementation "com.qifan.powerpermission:powerpermission-rxjava3:1.3.0"
-implementation "com.qifan.powerpermission:powerpermission-coroutines:1.3.0"
-implementation "com.qifan.powerpermission:powerpermission-livedata:1.3.0"
+implementation "com.qifan.powerpermission:powerpermission-rxjava2:1.4.0"
+implementation "com.qifan.powerpermission:powerpermission-rxjava3:1.4.0"
+implementation "com.qifan.powerpermission:powerpermission-coroutines:1.4.0"
+implementation "com.qifan.powerpermission:powerpermission-livedata:1.4.0"
 ```
 ### OverView
 |  Package Name     |     Role      | Usage |
 | ------------- |-------------|-------------|
-| powerpermission            | Basic core package       | implementation "com.qifan.powerpermission:powerpermission:1.2.0" |
-| powerpermission-rxjava2    | Support RxJava2          | implementation "com.qifan.powerpermission:powerpermission-rxjava2:1.2.0" |
-| powerpermission-rxjava3    | Support RxJava3          | implementation "com.qifan.powerpermission:powerpermission-rxjava3:1.2.0" |
-| powerpermission-coroutines | Support Kotlin Coroutine | implementation "com.qifan.powerpermission:powerpermission-coroutines:1.2.0" |
-| powerpermission-livedata   | Support Android LiveData | implementation "com.qifan.powerpermission:powerpermission-livedata:1.2.0" |
+| powerpermission            | Basic core package       | implementation "com.qifan.powerpermission:powerpermission:1.4.0" |
+| powerpermission-rxjava2    | Support RxJava2          | implementation "com.qifan.powerpermission:powerpermission-rxjava2:1.4.0" |
+| powerpermission-rxjava3    | Support RxJava3          | implementation "com.qifan.powerpermission:powerpermission-rxjava3:1.4.0" |
+| powerpermission-coroutines | Support Kotlin Coroutine | implementation "com.qifan.powerpermission:powerpermission-coroutines:1.4.0" |
+| powerpermission-livedata   | Support Android LiveData | implementation "com.qifan.powerpermission:powerpermission-livedata:1.4.0" |
 
 ## How to use
 ### Simple Usage
