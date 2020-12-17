@@ -4,9 +4,9 @@ ext {
     androidVersionName = "1.4.1"
 
     // ANDROID VERSION
-    androidCompileSdkVersion = 29
+    androidCompileSdkVersion = 30
     androidMinSdkVersion = 21
-    androidTargetSdkVersion = 29
+    androidTargetSdkVersion = 30
 
     // KOTLIN
     kotlinVersion = "1.4.21"
