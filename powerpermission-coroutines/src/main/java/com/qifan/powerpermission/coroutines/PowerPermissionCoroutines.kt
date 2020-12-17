@@ -45,13 +45,14 @@ suspend fun AppCompatActivity.awaitAskPermissions(
     checkMainThread()
     return suspendCancellableCoroutine { continuation ->
         askPermissions(
-            permissions = permissions,
             configuration = configuration,
             requestCode = requestCode,
-            rationaleDelegate = rationaleDelegate
-        ) { result ->
-            continuation.resume(result)
-        }
+            rationaleDelegate = rationaleDelegate,
+            callback = { result: PermissionResult ->
+                continuation.resume(result)
+            },
+            permissions = permissions
+        )
     }
 }
 
@@ -70,13 +71,14 @@ suspend fun AppCompatActivity.awaitAskPermissionsAllGranted(
 ): Boolean {
     return suspendCancellableCoroutine { continuation ->
         askPermissionsAllGranted(
-            permissions = permissions,
             configuration = configuration,
             requestCode = requestCode,
-            rationaleDelegate = rationaleDelegate
-        ) { allGranted ->
-            continuation.resume(allGranted)
-        }
+            rationaleDelegate = rationaleDelegate,
+            callback = { allGranted: Boolean ->
+                continuation.resume(allGranted)
+            },
+            permissions = permissions
+        )
     }
 }
 
@@ -96,13 +98,14 @@ suspend fun Fragment.awaitAskPermissions(
     checkMainThread()
     return suspendCancellableCoroutine { continuation ->
         askPermissions(
-            permissions = permissions,
             configuration = configuration,
             requestCode = requestCode,
-            rationaleDelegate = rationaleDelegate
-        ) { result ->
-            continuation.resume(result)
-        }
+            rationaleDelegate = rationaleDelegate,
+            callback = { result: PermissionResult ->
+                continuation.resume(result)
+            },
+            permissions = permissions
+        )
     }
 }
 
@@ -121,12 +124,13 @@ suspend fun Fragment.awaitAskPermissionsAllGranted(
 ): Boolean {
     return suspendCancellableCoroutine { continuation ->
         askPermissionsAllGranted(
-            permissions = permissions,
             configuration = configuration,
             requestCode = requestCode,
-            rationaleDelegate = rationaleDelegate
-        ) { allGranted ->
-            continuation.resume(allGranted)
-        }
+            rationaleDelegate = rationaleDelegate,
+            callback = { allGranted: Boolean ->
+                continuation.resume(allGranted)
+            },
+            permissions = permissions
+        )
     }
 }

@@ -43,13 +43,14 @@ fun AppCompatActivity.observeAskPermissions(
 ): MutableLiveData<PermissionResult> {
     val mLiveData = MutableLiveData<PermissionResult>()
     askPermissions(
-        permissions = permissions,
         configuration = configuration,
         requestCode = requestCode,
-        rationaleDelegate = rationaleDelegate
-    ) { result ->
-        mLiveData.postValue(result)
-    }
+        rationaleDelegate = rationaleDelegate,
+        callback = { result: PermissionResult ->
+            mLiveData.postValue(result)
+        },
+        permissions = permissions
+    )
     return mLiveData
 }
 
@@ -68,13 +69,14 @@ fun AppCompatActivity.observeAskPermissionsAllGranted(
 ): MutableLiveData<Boolean> {
     val mLiveData = MutableLiveData<Boolean>()
     askPermissionsAllGranted(
-        permissions = permissions,
         configuration = configuration,
         requestCode = requestCode,
-        rationaleDelegate = rationaleDelegate
-    ) { allGranted ->
-        mLiveData.postValue(allGranted)
-    }
+        callback = { allGranted: Boolean ->
+            mLiveData.postValue(allGranted)
+        },
+        rationaleDelegate = rationaleDelegate,
+        permissions = permissions
+    )
     return mLiveData
 }
 
@@ -93,13 +95,14 @@ fun Fragment.observeAskPermissions(
 ): MutableLiveData<PermissionResult> {
     val mLiveData = MutableLiveData<PermissionResult>()
     askPermissions(
-        permissions = permissions,
         configuration = configuration,
         requestCode = requestCode,
-        rationaleDelegate = rationaleDelegate
-    ) { result ->
-        mLiveData.postValue(result)
-    }
+        rationaleDelegate = rationaleDelegate,
+        callback = { result: PermissionResult ->
+            mLiveData.postValue(result)
+        },
+        permissions = permissions
+    )
     return mLiveData
 }
 
@@ -118,12 +121,13 @@ fun Fragment.observeAskPermissionsAllGranted(
 ): MutableLiveData<Boolean> {
     val mLiveData = MutableLiveData<Boolean>()
     askPermissionsAllGranted(
-        permissions = permissions,
         configuration = configuration,
         requestCode = requestCode,
-        rationaleDelegate = rationaleDelegate
-    ) { allGranted ->
-        mLiveData.postValue(allGranted)
-    }
+        rationaleDelegate = rationaleDelegate,
+        callback = { allGranted: Boolean ->
+            mLiveData.postValue(allGranted)
+        },
+        permissions = permissions
+    )
     return mLiveData
 }

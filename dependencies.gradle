@@ -45,7 +45,7 @@ ext {
     assertJCore = "org.assertj:assertj-core:$assertJCoreVerison"
 
     //mock
-    mockKVersion = "1.10.3"
+    mockKVersion = "1.10.2"
     mockK = "io.mockk:mockk:$mockKVersion"
 
 

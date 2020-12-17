@@ -36,9 +36,6 @@ interface RationaleDelegate {
      */
     fun showRationale(request: PermissionRequest, requestCode: RequestCode) {
         displayRationale(
-            permission = data
-                .getRationalePermission()
-                .toTypedArray(),
             message = data.message,
             actionCallback = RationaleActionCallback { recheck ->
                 if (recheck) {
@@ -46,7 +43,10 @@ interface RationaleDelegate {
                 } else {
                     onRefuseRecheckPermission()
                 }
-            }
+            },
+            permission = data
+                .getRationalePermission()
+                .toTypedArray()
         )
     }
 

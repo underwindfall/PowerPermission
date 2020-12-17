@@ -46,22 +46,23 @@ class ExampleActivity : AppCompatActivity() {
         PowerPermission.init()
             .requestPermissions(
                 context = this@ExampleActivity,
+                callback = { permissionResult ->
+                    when {
+                        permissionResult.hasAllGranted() -> {
+                            doPermissionAllGrantedWork(permissionResult.granted())
+                        }
+                        permissionResult.hasRational() -> {
+                            doPermissionReasonWork(permissionResult.rational())
+                        }
+                        permissionResult.hasPermanentDenied() -> {
+                            doPermissionPermanentWork(permissionResult.permanentDenied())
+                        }
+                    }
+                },
                 permissions = arrayOf(
                     Manifest.permission.CAMERA
                 )
-            ) { permissionResult ->
-                when {
-                    permissionResult.hasAllGranted() -> {
-                        doPermissionAllGrantedWork(permissionResult.granted())
-                    }
-                    permissionResult.hasRational() -> {
-                        doPermissionReasonWork(permissionResult.rational())
-                    }
-                    permissionResult.hasPermanentDenied() -> {
-                        doPermissionPermanentWork(permissionResult.permanentDenied())
-                    }
-                }
-            }
+            )
     }
 
     private fun doPermissionPermanentWork(permanentDenied: List<Permission>) {

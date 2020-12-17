@@ -45,13 +45,12 @@ fun AppCompatActivity.askPermissionsRx(
     checkMainThread()
     return Observable.create { emitter ->
         askPermissions(
-            permissions = permissions,
             configuration = configuration,
             requestCode = requestCode,
-            rationaleDelegate = rationaleDelegate
-        ) {
-            emitter.onNext(it)
-        }
+            rationaleDelegate = rationaleDelegate,
+            callback = { emitter.onNext(it) },
+            permissions = permissions
+        )
     }
 }
 
@@ -71,13 +70,14 @@ fun AppCompatActivity.askPermissionsAllGrantedRx(
 ): Observable<Boolean> {
     return Observable.create { emitter ->
         askPermissionsAllGranted(
-            permissions = permissions,
             configuration = configuration,
             requestCode = requestCode,
-            rationaleDelegate = rationaleDelegate
-        ) { allGranted ->
-            emitter.onNext(allGranted)
-        }
+            rationaleDelegate = rationaleDelegate,
+            callback = { allGranted: Boolean ->
+                emitter.onNext(allGranted)
+            },
+            permissions = permissions
+        )
     }
 }
 
@@ -98,13 +98,12 @@ fun Fragment.askPermissionsRx(
     checkMainThread()
     return Observable.create { emitter ->
         askPermissions(
-            permissions = permissions,
             configuration = configuration,
             requestCode = requestCode,
-            rationaleDelegate = rationaleDelegate
-        ) {
-            emitter.onNext(it)
-        }
+            rationaleDelegate = rationaleDelegate,
+            callback = { emitter.onNext(it) },
+            permissions = permissions,
+        )
     }
 }
 
@@ -124,12 +123,13 @@ fun Fragment.askPermissionsAllGrantedRx(
 ): Observable<Boolean> {
     return Observable.create { emitter ->
         askPermissionsAllGranted(
-            permissions = permissions,
             configuration = configuration,
             requestCode = requestCode,
-            rationaleDelegate = rationaleDelegate
-        ) { allGranted ->
-            emitter.onNext(allGranted)
-        }
+            rationaleDelegate = rationaleDelegate,
+            callback = { allGranted: Boolean ->
+                emitter.onNext(allGranted)
+            },
+            permissions = permissions
+        )
     }
 }

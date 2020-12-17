@@ -35,15 +35,15 @@ fun Fragment.askPermissions(
     configuration: Configuration = DefaultConfiguration(),
     requestCode: RequestCode = PERMISSION_REQUEST_CODE,
     rationaleDelegate: RationaleDelegate? = null,
-    callback: PermissionCallback
+    callback: PermissionCallback,
 ) {
     PowerPermission.init(configuration)
         .requestPermissions(
             context = this,
-            permissions = permissions,
             requestCode = requestCode,
             rationaleDelegate = rationaleDelegate,
-            callback = callback
+            callback = callback,
+            permissions = permissions
         )
 }
 
@@ -65,10 +65,11 @@ fun Fragment.askPermissionsAllGranted(
     PowerPermission.init(configuration)
         .requestPermissions(
             context = this,
-            permissions = permissions,
             requestCode = requestCode,
-            rationaleDelegate = rationaleDelegate
-        ) { permissionResults ->
-            callback(permissionResults.hasAllGranted())
-        }
+            rationaleDelegate = rationaleDelegate,
+            callback = { permissionResults ->
+                callback(permissionResults.hasAllGranted())
+            },
+            permissions = permissions
+        )
 }
