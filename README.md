@@ -1,5 +1,8 @@
 # PowerPermission
-[ ![jCenter](https://api.bintray.com/packages/qifan/maven/powerpermission/images/download.svg) ](https://api.bintray.com/packages/qifan/maven/powerpermission/_latestVersion)
+[![Issues](https://img.shields.io/github/issues/underwindfall/PowerPermission)]()
+[![Pull Requests](https://img.shields.io/github/issues-pr/underwindfall/PowerPermission)]()
+[![Code Size](https://img.shields.io/github/languages/code-size/underwindfall/PowerPermission)]()
+[![Contributors](https://img.shields.io/github/contributors/underwindfall/PowerPermission)]()
 [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg?style=flat-square)](https://www.apache.org/licenses/LICENSE-2.0.html)
 ![Android Check CI](https://github.com/underwindfall/PowerPermission/workflows/Android%20Check%20CI/badge.svg)
 #### English Documentation | [中文文档](https://github.com/underwindfall/PowerPermission/blob/master/README_ZH.md)
