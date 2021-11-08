@@ -2,6 +2,7 @@
 
 
 ## Unreleased
+* Updated Deps and move target sdk to 31
 
 
 ## v1.4.0

@@ -9,8 +9,6 @@ android {
     defaultConfig {
         minSdkVersion androidMinSdkVersion
         targetSdkVersion androidTargetSdkVersion
-        versionCode androidVersionCode
-        versionName androidVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
@@ -35,7 +33,7 @@ dependencies {
     implementation kotlinStdlib
     implementation androidXAppCompat
     api rxjava3
-    testImplementation "junit:junit:4.13.1"
+    testImplementation "junit:junit:4.13.2"
 }
 
 tasks.withType(Javadoc).all {
