@@ -9,7 +9,7 @@ ext {
     androidTargetSdkVersion = 31
 
     // KOTLIN
-    kotlinVersion = "1.5.31"
+    kotlinVersion = "1.6.0"
     kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
     kotlinReflect = "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
 
@@ -47,15 +47,4 @@ ext {
     //mock
     mockKVersion = "1.10.2"
     mockK = "io.mockk:mockk:$mockKVersion"
-
-
-    publishVersionID = "1.4.1"
-    groupProjectID = "com.qifan.powerpermission"
-    userName = "Qifan YANG"
-    userId = "underwindfall"
-    libName = "PowerPermission"
-    descriptionLib = "PowerPermission makes handling runtime permissions extremely easy."
-    websiteLib = "https://github.com/underwindfall/PowerPermission"
-    gitUrl = "https://github.com/underwindfall/PowerPermission.git"
-    licenseUrl = "https://github.com/underwindfall/PowerPermission/blob/master/LICENSE"
 }
