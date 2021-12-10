@@ -1,8 +1,5 @@
 apply plugin: "com.android.library"
 apply plugin: "kotlin-android"
-apply plugin: "maven-publish"
-//apply plugin: "com.jfrog.bintray"
-
 
 android {
     compileSdkVersion androidCompileSdkVersion
@@ -36,82 +33,11 @@ dependencies {
     testImplementation "junit:junit:4.13.2"
 }
 
-tasks.withType(Javadoc).all {
-    enabled = false
+ext {
+    PUBLISH_GROUP_ID = "io.github.underwindfall"
+    PUBLISH_VERSION = "1.4.2"
+    PUBLISH_ARTIFACT_ID = 'powerpermission-livedata'
 }
 
-task androidJavadocs(type: Javadoc) {
-    source = android.sourceSets.main.java.source
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-}
+apply from: "../publish-module.gradle"
 
-task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
-    classifier = 'javadoc'
-    from androidJavadocs.destinationDir
-}
-
-task androidSourcesJar(type: Jar) {
-    classifier = 'sources'
-    from android.sourceSets.main.java.source
-}
-
-
-//afterEvaluate {
-//    publishing {
-//        publications {
-//            release(MavenPublication) {
-//                groupId = groupProjectID
-//                artifactId = "powerpermission-livedata"
-//                version = publishVersionID
-//                artifact androidSourcesJar
-//                artifact androidJavadocsJar
-//                pom {
-//                    name = libName
-//                    description = descriptionLib
-//                    url = websiteLib
-//                    developers {
-//                        developer {
-//                            id = userId
-//                            name = userName
-//                        }
-//                    }
-//                    licenses {
-//                        license {
-//                            name = "The Apache License, Version 2.0"
-//                            url = "www.apache.org/licenses/LICENSE-2.0.txt"
-//                        }
-//                    }
-//                    scm {
-//                        connection = gitUrl
-//                        developerConnection = gitUrl
-//                        url = websiteLib
-//                    }
-//                }
-//                from components.release
-//            }
-//        }
-//    }
-//}
-
-Properties properties = new Properties()
-def isLocal = project.rootProject.file("local.properties").exists()
-if (isLocal) {
-    properties.load(project.rootProject.file("local.properties").newDataInputStream())
-}
-
-//bintray {
-//    user = !isLocal ? System.getenv("bintrayUser") : properties.getProperty("bintrayUser")
-//    key = !isLocal ? System.getenv("bintrayApiKey") : properties.getProperty("bintrayApiKey")
-//    pkg {
-//        repo = "maven"
-//        name = "powerpermission-livedata"
-//        websiteUrl = websiteLib
-//        vcsUrl = gitUrl
-//        licenses = ['Apache-2.0']
-//        publish = true
-//        version {
-//            name = publishVersionID
-//        }
-//        publications = ['release']
-//    }
-//}
