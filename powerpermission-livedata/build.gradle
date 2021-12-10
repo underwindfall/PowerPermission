@@ -40,4 +40,3 @@ ext {
 }
 
 apply from: "../publish-module.gradle"
-
