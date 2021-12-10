@@ -3,26 +3,25 @@ buildscript {
     apply from: "dependencies.gradle"
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.3'
+        classpath "com.android.tools.build:gradle:7.0.4"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         classpath "com.diffplug.spotless:spotless-plugin-gradle:5.17.1"
-        classpath "de.mannodermaus.gradle.plugins:android-junit5:1.6.2.0"
-        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.5"
-        classpath "com.github.ben-manes:gradle-versions-plugin:0.36.0"
+        classpath "de.mannodermaus.gradle.plugins:android-junit5:1.8.0.0"
+//        classpath "com.github.ben-manes:gradle-versions-plugin:0.36.0"
     }
 }
 apply {
     from(rootProject.file("spotless/spotless.gradle"))
-    from(rootProject.file("version_plugin_config.gradle"))
+//   from(rootProject.file("version_plugin_config.gradle"))
 }
 
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 }
 
@@ -31,8 +30,8 @@ subprojects {
         kotlinOptions {
             // Treat all Kotlin warnings as errors
             //TODO related issue https://github.com/underwindfall/PowerPermission/issues/30
-            // allWarningsAsErrors = true
-            jvmTarget = "1.8"
+//            allWarningsAsErrors = true
+            jvmTarget = "11"
         }
     }
 }
