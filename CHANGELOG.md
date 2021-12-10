@@ -1,8 +1,8 @@
 # ChangeLog
 
-
-## Unreleased
-* Updated Deps and move target sdk to 31
+## v1.5.0
+* [CHANGE] Updated Deps and move target sdk to 31
+* [BREAK] From this version, we no longer support `Jcenter`, move to `mavenCentral`
 
 
 ## v1.4.0
